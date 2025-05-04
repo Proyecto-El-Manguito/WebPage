@@ -4,7 +4,7 @@ import React from "react";
 export default function Home() {
   return (
     <Container>
-      <h1>Como usar colores</h1>
+      <h1 class="text-3xl font-bold">Como usar colores</h1>
       <Box
         bgcolor="primary.main"
         sx={{
