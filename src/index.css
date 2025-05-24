@@ -3,3 +3,8 @@
   margin: 0;
   font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
 }
+@keyframes blink {
+  50% {
+    border-color: transparent;
+  }
+}

@@ -9,7 +9,7 @@ import Location from "../pages/Location";
 import Contact from "../pages/Contact";
 import Products from "../pages/Products";
 import NotFound from "../pages/NotFound";
-import Navbar from "../components/Navbar";
+import Navbar from "../components/genericComponents/Navbar";
 import { useThemeHook } from "../hooks/useTheme";
 import { createTheme, ThemeProvider } from "@mui/material";
 
