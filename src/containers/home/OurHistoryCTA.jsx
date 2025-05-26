@@ -20,8 +20,8 @@ export default function OurHistoryCTA() {
       ref={ref}
       sx={{
         width: "100%",
-        height: "110vh",
-        minHeight: "calc(auto + 100px)",
+        minHeight: "110vh",
+        height: "calc(auto + 100px)",
         display: "flex",
         justifyContent: "center",
         alignItems: "center",
@@ -76,7 +76,7 @@ export default function OurHistoryCTA() {
                   alt={`Imagen ${i + 1}`}
                   sx={{
                     width: isMobile ? "70vw" : "12vw",
-                    height: isMobile ? "20vh" : "45vh",
+                    height: isMobile ? "10vh" : "45vh",
                     objectFit: "cover",
                     borderRadius: 2,
                   }}
@@ -107,17 +107,10 @@ export default function OurHistoryCTA() {
               Nuestra historia
             </Typography>
             <Typography
-              variant="h5"
+              variant="h6"
               color="#fff"
               sx={{
                 textAlign: "center",
-                fontSize: {
-                  xs: "1.25rem",
-                  sm: "1.25rem",
-                  md: "1.25rem",
-                  lg: "1.25rem",
-                  xl: "1.25rem",
-                },
               }}
             >
               ACOAPASER de R. L. es una cooperativa agrícola que desde 1985 ha

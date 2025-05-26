@@ -99,7 +99,6 @@ export default function ContactUsCTA() {
               width: "fit-content",
               padding: "8px 16px",
               borderRadius: "50px",
-              fontSize: "1rem",
               fontWeight: 700,
             }}
           />

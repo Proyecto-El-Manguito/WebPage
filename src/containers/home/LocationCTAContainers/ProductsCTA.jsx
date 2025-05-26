@@ -121,7 +121,6 @@ export default function ProductsCTA() {
                   width: "fit-content",
                   padding: "8px 16px",
                   borderRadius: "50px",
-                  fontSize: "1rem",
                   fontWeight: 700,
                 }}
               />
