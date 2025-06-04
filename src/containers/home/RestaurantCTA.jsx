@@ -25,7 +25,7 @@ export default function RestaurantCTA() {
       alt: "Imagen destacada",
       width: "100%",
       height: isMobile ? "100px" : "200px",
-      delay: 0.2,
+      delay: 0.5,
       x: -50,
       y: -50,
     },
@@ -34,7 +34,7 @@ export default function RestaurantCTA() {
       alt: "Imagen destacada",
       width: "100%",
       height: isMobile ? "200px" : "400px",
-      delay: 0.3,
+      delay: 0.75,
       x: 50,
       y: -50,
     },
@@ -43,7 +43,7 @@ export default function RestaurantCTA() {
       alt: "Imagen destacada",
       width: "100%",
       height: isMobile ? "200px" : "400px",
-      delay: 0.4,
+      delay: 1,
       x: -50,
       y: 50,
     },
@@ -52,14 +52,14 @@ export default function RestaurantCTA() {
       alt: "Imagen destacada",
       width: "100%",
       height: isMobile ? "100px" : "200px",
-      delay: 0.5,
+      delay: 1.25,
       x: 50,
       y: 50,
     },
   ];
 
   const ref = useRef(null);
-  const isInView = useInView(ref, { once: false, amount: 0.3 });
+  const isInView = useInView(ref, { once: false, amount: 0.5 });
   const navigate = useNavigate();
   return (
     <Box
@@ -90,7 +90,7 @@ export default function RestaurantCTA() {
               animate={
                 isInView ? { x: 0, opacity: 1 } : { x: -120, opacity: 0 }
               }
-              transition={{ duration: 1, delay: 0.5, ease: "easeOut" }}
+              transition={{ duration: 1, delay: 1.5, ease: "easeOut" }}
             >
               <Typography
                 variant="h4"

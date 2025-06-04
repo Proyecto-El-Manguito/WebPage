@@ -6,7 +6,7 @@ import { useNavigate } from "react-router-dom";
 
 export default function ContactUsCTA() {
   const ref = useRef(null);
-  const isInView = useInView(ref, { once: false, amount: 0.3 });
+  const isInView = useInView(ref, { once: false, amount: 0.5 });
   const navigate = useNavigate();
 
   const textVariants = {
@@ -94,13 +94,8 @@ export default function ContactUsCTA() {
             title="Contáctanos"
             variant="contained"
             color="#275448"
+            width="fit-content"
             onClick={() => navigate("/contacto")}
-            sx={{
-              width: "fit-content",
-              padding: "8px 16px",
-              borderRadius: "50px",
-              fontWeight: 700,
-            }}
           />
         </motion.div>
       </Stack>

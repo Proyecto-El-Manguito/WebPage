@@ -53,7 +53,7 @@ const images = [
 
 export default function GalleryCTA() {
   const ref = useRef(null);
-  const isInView = useInView(ref, { once: false, amount: 0.3 });
+  const isInView = useInView(ref, { once: false, amount: 0.5 });
   return (
     <Stack
       ref={ref}
@@ -76,7 +76,7 @@ export default function GalleryCTA() {
           <motion.div
             initial={{ opacity: 0, y: -50 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.5 }}
+            transition={{ duration: 0.5, delay: 0.25 }}
           >
             <Typography
               variant="h4"
@@ -92,7 +92,7 @@ export default function GalleryCTA() {
           <motion.div
             initial={{ opacity: 0, y: -50 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.5, delay: 0.25 }}
+            transition={{ duration: 0.5, delay: 0.75 }}
           >
             <Typography
               variant="h6"
@@ -109,7 +109,7 @@ export default function GalleryCTA() {
           <motion.div
             initial={{ opacity: 0 }}
             animate={isInView ? { opacity: 1 } : {}}
-            transition={{ duration: 0.5 }}
+            transition={{ duration: 0.5, delay: 0.5 }}
           >
             <Container>
               <Box
@@ -179,10 +179,10 @@ export default function GalleryCTA() {
                       exit={{ opacity: 0, y: 400 }}
                       transition={{
                         type: "spring",
-                        stiffness: 200,
-                        damping: 25,
-                        bounce: 0.2,
-                        delay: 0.15 * index,
+                        stiffness: 100,
+                        damping: 15,
+                        bounce: 0.5,
+                        delay: 1 + 0.15 * index,
                       }}
                     >
                       <Box

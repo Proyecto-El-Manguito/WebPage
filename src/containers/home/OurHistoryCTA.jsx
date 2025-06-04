@@ -13,7 +13,7 @@ export default function OurHistoryCTA() {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("md")); // sm = 600px por defecto
   const ref = useRef(null);
-  const isInView = useInView(ref, { once: false, amount: 0.3 }); // amount = porcentaje visible para activar
+  const isInView = useInView(ref, { once: false, amount: 0.5 }); // amount = porcentaje visible para activar
   const navigate = useNavigate();
   return (
     <Box
@@ -32,7 +32,7 @@ export default function OurHistoryCTA() {
     >
       <Container>
         <Stack
-          my={8}
+          mt={8}
           direction="column"
           sx={{
             justifyContent: "center",
@@ -42,6 +42,7 @@ export default function OurHistoryCTA() {
           {/*Sección de imagenes */}
           <Stack
             spacing={isMobile ? 2 : 4}
+            py={isMobile ? 2 : 4}
             direction={{
               xs: "column",
               sm: "column",
@@ -49,6 +50,7 @@ export default function OurHistoryCTA() {
               lg: "row",
               xl: "row",
             }}
+            sx={{ justifyContent: "center", width: "100%" }}
           >
             {[0.2, 0.3, 0.4, 0.5].map((delay, i) => (
               <motion.div
@@ -68,19 +70,20 @@ export default function OurHistoryCTA() {
                     : { y: i % 2 === 0 ? -80 : 80, opacity: 0 }
                 }
                 transition={{ duration: 1, delay, ease: "easeOut" }}
-                style={{ zIndex: 2 }}
+                style={{ zIndex: 2, position: "relative" }}
               >
                 <Box
                   component="img"
                   src={img}
                   alt={`Imagen ${i + 1}`}
                   sx={{
-                    width: isMobile ? "70vw" : "12vw",
-                    height: isMobile ? "10vh" : "45vh",
+                    width: isMobile ? "70vw" : "10vw",
+                    height: isMobile ? "10vh" : "40vh",
                     objectFit: "cover",
                     borderRadius: 2,
                   }}
                 />
+                <DiamondNumber number={i + 1} isInView={isInView} />
               </motion.div>
             ))}
           </Stack>
@@ -154,3 +157,84 @@ export default function OurHistoryCTA() {
     </Box>
   );
 }
+
+const DiamondNumber = ({ number, isInView }) => {
+  return (
+    <Box
+      sx={{
+        position: "absolute",
+        left: "50%",
+        top: "93%",
+        transform: "translateX(-50%)",
+        width: "50px",
+        height: "50px",
+        cursor: "pointer",
+      }}
+      component={motion.div}
+      transition={{ type: "spring", stiffness: 300 }}
+    >
+      <motion.div
+        initial={{ scale: 0 }}
+        animate={isInView ? { scale: 1, rotate: 45 } : { scale: 0, rotate: 45 }}
+        transition={{ duration: 0.5, ease: "easeOut", delay: 1 + number * 0.5 }}
+        style={{
+          width: "100%",
+          height: "100%",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          borderRadius: 2,
+        }}
+      >
+        {/* SVG animado */}
+        <motion.svg
+          width="100%"
+          height="100%"
+          viewBox="0 0 100 100"
+          initial={{ pathLength: 0 }}
+          animate={isInView ? { pathLength: 1 } : { pathLength: 0 }}
+          transition={{
+            duration: 1,
+            delay: 1 + number * 0.5,
+            ease: "easeIn",
+          }}
+          style={{
+            position: "absolute",
+            top: 0,
+            left: 0,
+          }}
+        >
+          <motion.rect
+            x="10"
+            y="10"
+            width="80"
+            height="80"
+            rx="0"
+            ry="0"
+            stroke="white"
+            strokeWidth="4"
+            fill="transparent"
+            pathLength={1}
+            initial={{ pathLength: 0 }}
+            animate={isInView ? { pathLength: 1 } : { pathLength: 0 }}
+            transition={{
+              duration: 1,
+              delay: 1 + number * 0.5,
+              ease: "easeInOut",
+            }}
+          />
+        </motion.svg>
+        <Typography
+          variant="h6"
+          color="white"
+          sx={{
+            transform: "rotate(-45deg)",
+            fontWeight: "bold",
+          }}
+        >
+          {number}
+        </Typography>
+      </motion.div>
+    </Box>
+  );
+};

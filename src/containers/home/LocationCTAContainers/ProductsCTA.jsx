@@ -7,7 +7,7 @@ import imgTest from "../../../assets/mango.png";
 
 export default function ProductsCTA() {
   const ref = useRef(null);
-  const isInView = useInView(ref, { once: false, amount: 0.3 });
+  const isInView = useInView(ref, { once: false, amount: 0.5 });
   const navigate = useNavigate();
 
   const textVariants = {
@@ -113,16 +113,11 @@ export default function ProductsCTA() {
           {
             component: (
               <StyledButton
-                title="Contáctanos"
+                title="Ver más"
                 variant="contained"
                 color="#275448"
                 onClick={() => navigate("/contacto")}
-                sx={{
-                  width: "fit-content",
-                  padding: "8px 16px",
-                  borderRadius: "50px",
-                  fontWeight: 700,
-                }}
+                width="fit-content"
               />
             ),
           },

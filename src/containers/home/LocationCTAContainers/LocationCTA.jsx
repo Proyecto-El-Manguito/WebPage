@@ -1,13 +1,13 @@
-import React from "react";
+import React, { useRef } from "react";
 import { Grid, Typography, Divider } from "@mui/material";
 import { motion, useInView } from "framer-motion";
 import StyledButton from "../../../components/genericComponents/StyledButton";
 import { useNavigate } from "react-router-dom";
 
-export default function LocationAndMapContainer() {
-  const ref = React.useRef(null);
+export default function LocationCTA() {
+  const ref = useRef(null);
   const navigate = useNavigate();
-  const isInView = useInView(ref, { once: false, amount: 0.3 });
+  const isInView = useInView(ref, { once: false, amount: 0.5 });
   const textVariants = {
     hidden: { opacity: 0, y: 50 },
     visible: (i) => ({
@@ -31,9 +31,6 @@ export default function LocationAndMapContainer() {
         display: "flex",
         justifyContent: "center",
         alignItems: "center",
-        height: "100%",
-        width: "100%",
-        padding: 20,
       }}
     >
       <Grid
