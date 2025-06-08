@@ -85,8 +85,10 @@ export default function Home() {
       <OurHistoryCTADemo />
       <AnimatedCards />
       <ActivitiesCTA video={piscina} imgArray={imgArray} />
-      <GalleryCTA />
-      <LocationAndMapCTA />
+      <div className="overflow-hidden">
+        <GalleryCTA />
+        <LocationAndMapCTA />
+      </div>
       <Footer />
     </main>
   );

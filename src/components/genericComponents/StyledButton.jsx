@@ -18,7 +18,6 @@ export default function StyledButton({
         position: "relative",
         marginTop: "20px",
         padding: "10px 20px",
-        fontSize: "1rem",
         fontWeight: "bold",
         width: originalWidth,
         color: color,

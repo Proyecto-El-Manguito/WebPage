@@ -68,7 +68,6 @@ export default function OurHistoryCTADemo() {
         position: "relative",
         boxShadow: "0 -10px 20px rgba(0,0,0,0.1)",
       }}
-      ref={container}
     >
       <Box
         sx={{

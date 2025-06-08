@@ -8,12 +8,14 @@ import StyledLink from "../../components/genericComponents/StyledLink";
 
 export default function SectionWithMotion() {
   const ref = useRef(null);
+
   const isInView = useInView(ref, { once: true, amount: 0.3 });
 
   const images = [
     "https://i.imgur.com/I2m3yBh.jpg",
     "https://i.imgur.com/X6NhvOq.jpg",
   ];
+
 
   return (
     <Box
@@ -61,6 +63,7 @@ export default function SectionWithMotion() {
                   width={500}
                   height={500}
                 />
+                <DiamondNumber number={i + 1} isInView={isInView} />
               </motion.div>
             ))}
           </div>
@@ -89,3 +92,84 @@ export default function SectionWithMotion() {
     </Box>
   );
 }
+
+const DiamondNumber = ({ number, isInView }) => {
+  return (
+    <Box
+      sx={{
+        position: "absolute",
+        left: "50%",
+        top: "93%",
+        transform: "translateX(-50%)",
+        width: "50px",
+        height: "50px",
+        cursor: "pointer",
+      }}
+      component={motion.div}
+      transition={{ type: "spring", stiffness: 300 }}
+    >
+      <motion.div
+        initial={{ scale: 0 }}
+        animate={isInView ? { scale: 1, rotate: 45 } : { scale: 0, rotate: 45 }}
+        transition={{ duration: 0.5, ease: "easeOut", delay: 1 + number * 0.5 }}
+        style={{
+          width: "100%",
+          height: "100%",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          borderRadius: 2,
+        }}
+      >
+        {/* SVG animado */}
+        <motion.svg
+          width="100%"
+          height="100%"
+          viewBox="0 0 100 100"
+          initial={{ pathLength: 0 }}
+          animate={isInView ? { pathLength: 1 } : { pathLength: 0 }}
+          transition={{
+            duration: 1,
+            delay: 1 + number * 0.5,
+            ease: "easeIn",
+          }}
+          style={{
+            position: "absolute",
+            top: 0,
+            left: 0,
+          }}
+        >
+          <motion.rect
+            x="10"
+            y="10"
+            width="80"
+            height="80"
+            rx="0"
+            ry="0"
+            stroke="white"
+            strokeWidth="4"
+            fill="transparent"
+            pathLength={1}
+            initial={{ pathLength: 0 }}
+            animate={isInView ? { pathLength: 1 } : { pathLength: 0 }}
+            transition={{
+              duration: 1,
+              delay: 1 + number * 0.5,
+              ease: "easeInOut",
+            }}
+          />
+        </motion.svg>
+        <Typography
+          variant="h6"
+          color="white"
+          sx={{
+            transform: "rotate(-45deg)",
+            fontWeight: "bold",
+          }}
+        >
+          {number}
+        </Typography>
+      </motion.div>
+    </Box>
+  );
+};

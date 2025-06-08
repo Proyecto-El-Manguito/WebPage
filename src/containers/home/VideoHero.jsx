@@ -24,9 +24,9 @@ export default function VideoHero({ video }) {
           bottom: 0,
           left: 0,
           width: "100%",
-          height: "10%", // degradado más pequeño
-          background: "linear-gradient(to top, #fff, transparent)",
-          zIndex: 1,
+          height: "50%", // ajusta el alto del degradado
+          background: "linear-gradient(to top, #275448, transparent)",
+          zIndex: 3,
         }}
       /> */}
 

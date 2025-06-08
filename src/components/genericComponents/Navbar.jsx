@@ -19,6 +19,8 @@ import React, { useState } from "react";
 import { navItems } from "../../utils/Const";
 import { useNavigate } from "react-router-dom";
 import useScrollPosition from "../../hooks/useScrollPosition";
+import FacebookIcon from "@mui/icons-material/Facebook";
+import InstagramIcon from "@mui/icons-material/Instagram";
 
 const drawerWidth = 240;
 
@@ -132,6 +134,29 @@ export default function Navbar() {
                   {item?.name}
                 </Button>
               ))}
+              {/*Icono de instagram*/}
+              <IconButton
+                sx={{ marginLeft: 2 }}
+                color="inherit"
+                onClick={() => {
+                  window.open(
+                    "https://www.instagram.com/el_manguito/",
+                    "_blank"
+                  );
+                }}
+              >
+                <InstagramIcon />
+              </IconButton>
+              {/*Icono de facebook*/}
+              <IconButton
+                sx={{ marginLeft: 2 }}
+                color="inherit"
+                onClick={() => {
+                  window.open("https://www.facebook.com/el_manguito", "_blank");
+                }}
+              >
+                <FacebookIcon />
+              </IconButton>
             </Box>
           </Stack>
         </Container>
