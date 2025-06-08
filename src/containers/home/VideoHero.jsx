@@ -25,7 +25,7 @@ export default function VideoHero({ video }) {
           width: "100%",
           height: "50%", // ajusta el alto del degradado
           background: "linear-gradient(to top, #275448, transparent)",
-          zIndex: 1,
+          zIndex: 3,
         }}
       />
 
@@ -43,9 +43,10 @@ export default function VideoHero({ video }) {
           alignItems: "center",
           color: "#fff",
           textShadow: "0 0 10px #000",
+          backgroundColor: "rgba(0, 0, 0, 0.4)",
         }}
       >
-        <Typography variant="h2">¡Bienvenido al Manguito!</Typography>
+        <Typography variant="h3">¡Bienvenido al Manguito!</Typography>
       </Box>
     </Box>
   );

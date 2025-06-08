@@ -1,18 +1,11 @@
+import { createTheme, responsiveFontSizes } from "@mui/material/styles";
+
 const themeColor = "dark";
 
 function useThemeHook() {
-  const theme = {
-    // breakpoints: {
-    //   values: {
-    //     xs: 0,
-    //     sm: 600,
-    //     md: 900,
-    //     lg: 1200,
-    //     xl: 1600,
-    //   },
-    // },
+  let theme = createTheme({
     palette: {
-      mode: "light", //Change to themeColor to apply toogle themes
+      mode: "light",
       ...(themeColor === "light"
         ? {}
         : {
@@ -40,7 +33,6 @@ function useThemeHook() {
               black: "#060604",
               light: "#efcb69",
             },
-
             error: {
               main: "#ff0000",
             },
@@ -54,9 +46,28 @@ function useThemeHook() {
           }),
     },
     typography: {
-      fontFamily: ["Work Sans"],
+      fontFamily: ["Work Sans", "Arial", "sans-serif"].join(","),
+      // Define los tamaños base para cada variante
+      h1: {
+        fontSize: "3rem", // se ajustará con responsiveFontSizes
+      },
+      h2: {
+        fontSize: "2.5rem",
+      },
+      h3: {
+        fontSize: "2rem",
+      },
+      body1: {
+        fontSize: "1rem",
+      },
+      body2: {
+        fontSize: "0.875rem",
+      },
     },
-  };
+  });
+
+  // Aplica tamaños de fuente responsivos automáticamente
+  theme = responsiveFontSizes(theme);
 
   return theme;
 }

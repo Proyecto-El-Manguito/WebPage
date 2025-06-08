@@ -53,7 +53,7 @@ const images = [
 
 export default function GalleryCTA() {
   const ref = useRef(null);
-  const isInView = useInView(ref, { once: false, amount: 0.3 });
+  const isInView = useInView(ref, { once: false, amount: 0.5 });
   return (
     <Stack
       ref={ref}
@@ -70,126 +70,141 @@ export default function GalleryCTA() {
         bgcolor: "background.grey",
       }}
     >
-      <AnimatePresence>
-        {/* Titulo de la sección */}
-        <motion.div
-          initial={{ opacity: 0, y: -50 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.5 }}
-        >
-          <Typography variant="h4" color="third.main" fontWeight={700}>
-            Explora nuestra galería
-          </Typography>
-        </motion.div>
-        {/* Subtítulo de la sección */}
-        <motion.div
-          initial={{ opacity: 0, y: -50 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.5, delay: 0.25 }}
-        >
-          <Typography variant="h6" color="primary.darken" fontWeight={400}>
-            Descubre la belleza de nuestro hotel a través de imágenes
-            cautivadoras.
-          </Typography>
-        </motion.div>
-        {/* Contener para la galería de imágenes */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={isInView ? { opacity: 1 } : {}}
-          transition={{ duration: 0.5 }}
-        >
-          <Container>
-            <Box
-              sx={{
-                position: "relative",
-                padding: 2,
-                borderRadius: 4,
-                background: "linear-gradient(to Bottom, #275448, transparent)",
-                width: "100%",
-                minHeight: {
-                  xs: "800px",
-                  sm: "600px",
-                  md: "500px",
-                  lg: "400px",
-                },
-                height: "70svh",
-                overflow: "hidden",
-              }}
+      <Container>
+        <AnimatePresence>
+          {/* Titulo de la sección */}
+          <motion.div
+            initial={{ opacity: 0, y: -50 }}
+            animate={isInView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.5, delay: 0.25 }}
+          >
+            <Typography
+              variant="h4"
+              py={1}
+              color="third.main"
+              align="center"
+              fontWeight={700}
             >
+              Explora nuestra galería
+            </Typography>
+          </motion.div>
+          {/* Subtítulo de la sección */}
+          <motion.div
+            initial={{ opacity: 0, y: -50 }}
+            animate={isInView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.5, delay: 0.75 }}
+          >
+            <Typography
+              variant="h6"
+              color="primary.darken"
+              align="center"
+              pb={1}
+              fontWeight={400}
+            >
+              Descubre la belleza de nuestro hotel a través de imágenes
+              cautivadoras.
+            </Typography>
+          </motion.div>
+          {/* Contener para la galería de imágenes */}
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={isInView ? { opacity: 1 } : {}}
+            transition={{ duration: 0.5, delay: 0.5 }}
+          >
+            <Container>
               <Box
                 sx={{
-                  position: "absolute",
-                  top: 0,
-                  left: 0,
-                  width: "100%",
-                  height: "100%",
+                  position: "relative",
+                  padding: 2,
+                  borderRadius: 4,
                   background:
-                    "linear-gradient(to bottom, transparent, #D9D9D9)",
-                  zIndex: 3,
-                }}
-              />
-
-              <Box
-                sx={{
-                  position: "absolute",
-                  top: "50%",
-                  left: "50%",
-                  transform: "translate(-50%, -50%)",
-                  borderRadius: 12,
-                  color: "#fff",
-                  zIndex: 4,
-                  width: {
-                    xs: "80%",
-                    sm: "60%",
-                    md: "40%",
-                    lg: "30%",
+                    "linear-gradient(to Bottom, #275448, transparent)",
+                  width: "100%",
+                  minHeight: {
+                    xs: "800px",
+                    sm: "600px",
+                    md: "500px",
+                    lg: "400px",
                   },
-                  py: 1,
+                  height: "70svh",
+                  overflow: "hidden",
                 }}
               >
-                <StyledButton
-                  title="Ver galería"
-                  color="#275448"
-                  width={"auto"}
+                <Box
+                  sx={{
+                    position: "absolute",
+                    top: 0,
+                    left: 0,
+                    width: "100%",
+                    height: "100%",
+                    background:
+                      "linear-gradient(to bottom, transparent, #D9D9D9)",
+                    zIndex: 3,
+                  }}
                 />
-              </Box>
-              <Masonry columns={{ xs: 2, sm: 3, md: 4 }} spacing={2}>
-                {images.map((imgObj, index) => (
-                  <motion.div
-                    key={imgObj?.id}
-                    src={imgObj?.src}
-                    alt={`Imagen ${imgObj?.id}`}
-                    layout
-                    initial={{ opacity: 0, y: 400 }}
-                    animate={isInView ? { opacity: 1, y: 0 } : {}}
-                    exit={{ opacity: 0, y: 400 }}
-                    transition={{
-                      type: "spring",
-                      stiffness: 200,
-                      damping: 25,
-                      bounce: 0.2,
-                      delay: 0.15 * index,
-                    }}
-                  >
-                    <Box
-                      component="img"
+
+                <Box
+                  sx={{
+                    position: "absolute",
+                    top: "50%",
+                    left: "50%",
+                    transform: "translate(-50%, -50%)",
+                    borderRadius: 12,
+                    color: "#fff",
+                    zIndex: 4,
+                    width: {
+                      xs: "80%",
+                      sm: "60%",
+                      md: "40%",
+                      lg: "30%",
+                    },
+                    py: 1,
+                  }}
+                >
+                  <StyledButton
+                    title="Ver galería"
+                    color="#275448"
+                    width={"auto"}
+                  />
+                </Box>
+                <Masonry columns={{ xs: 2, sm: 3, md: 4 }} spacing={2}>
+                  {images.map((imgObj, index) => (
+                    <motion.div
+                      key={imgObj?.id}
                       src={imgObj?.src}
-                      alt={imgObj?.alt}
-                      sx={{
-                        width: "100%",
-                        height: imgObj?.height,
-                        objectFit: "cover",
-                        borderRadius: 2,
-                        display: "block",
+                      alt={`Imagen ${imgObj?.id}`}
+                      layout
+                      initial={{ opacity: 0, y: 400 }}
+                      animate={isInView ? { opacity: 1, y: 0 } : {}}
+                      exit={{ opacity: 0, y: 400 }}
+                      transition={{
+                        type: "spring",
+                        stiffness: 100,
+                        damping: 15,
+                        bounce: 0.5,
+                        delay: 1 + 0.15 * index,
                       }}
-                    />
-                  </motion.div>
-                ))}
-              </Masonry>
-            </Box>
-          </Container>
-        </motion.div>
-      </AnimatePresence>
+                    >
+                      <Box
+                        component="img"
+                        src={imgObj?.src}
+                        alt={imgObj?.alt}
+                        sx={{
+                          width: "100%",
+                          height: imgObj?.height,
+                          objectFit: "cover",
+                          borderRadius: 2,
+                          display: "block",
+                        }}
+                      />
+                    </motion.div>
+                  ))}
+                </Masonry>
+              </Box>
+            </Container>
+          </motion.div>
+        </AnimatePresence>
+      </Container>
     </Stack>
   );
 }

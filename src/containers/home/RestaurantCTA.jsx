@@ -3,53 +3,63 @@ import propTypes from "prop-types";
 import { useRef } from "react";
 import { useInView } from "framer-motion";
 import { useNavigate } from "react-router-dom";
-import { Box, Container, Grid, Typography } from "@mui/material";
+import {
+  Box,
+  Container,
+  Grid,
+  Typography,
+  useMediaQuery,
+  useTheme,
+} from "@mui/material";
 import { motion } from "framer-motion";
 import { Masonry } from "@mui/lab";
 import StyledButton from "../../components/genericComponents/StyledButton";
 import img from "../../assets/img_vertical.jpg";
 
-const GridImages = [
-  {
-    src: img,
-    alt: "Imagen destacada",
-    width: "100%",
-    height: "200px",
-    delay: 0.2,
-    x: -50,
-    y: -50,
-  },
-  {
-    src: img,
-    alt: "Imagen destacada",
-    width: "100%",
-    height: "400px",
-    delay: 0.3,
-    x: 50,
-    y: -50,
-  },
-  {
-    src: img,
-    alt: "Imagen destacada",
-    width: "100%",
-    height: "400px",
-    delay: 0.4,
-    x: -50,
-    y: 50,
-  },
-  {
-    src: img,
-    alt: "Imagen destacada",
-    width: "100%",
-    height: "200px",
-    delay: 0.5,
-    x: 50,
-    y: 50,
-  },
-];
 export default function RestaurantCTA() {
+  const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down("md"));
+  const GridImages = [
+    {
+      src: img,
+      alt: "Imagen destacada",
+      width: "100%",
+      height: isMobile ? "100px" : "200px",
+      delay: 0.5,
+      x: -50,
+      y: -50,
+    },
+    {
+      src: img,
+      alt: "Imagen destacada",
+      width: "100%",
+      height: isMobile ? "200px" : "400px",
+      delay: 0.75,
+      x: 50,
+      y: -50,
+    },
+    {
+      src: img,
+      alt: "Imagen destacada",
+      width: "100%",
+      height: isMobile ? "200px" : "400px",
+      delay: 1,
+      x: -50,
+      y: 50,
+    },
+    {
+      src: img,
+      alt: "Imagen destacada",
+      width: "100%",
+      height: isMobile ? "100px" : "200px",
+      delay: 1.25,
+      x: 50,
+      y: 50,
+    },
+  ];
+
   const ref = useRef(null);
-  const isInView = useInView(ref, { once: false, amount: 0.3 });
+  const isInView = useInView(ref, { once: false, amount: 0.5 });
   const navigate = useNavigate();
   return (
     <Box
@@ -80,7 +90,7 @@ export default function RestaurantCTA() {
               animate={
                 isInView ? { x: 0, opacity: 1 } : { x: -120, opacity: 0 }
               }
-              transition={{ duration: 1, delay: 0.5, ease: "easeOut" }}
+              transition={{ duration: 1, delay: 1.5, ease: "easeOut" }}
             >
               <Typography
                 variant="h4"
@@ -98,13 +108,6 @@ export default function RestaurantCTA() {
                 color="third.lighten"
                 sx={{
                   textAlign: "left",
-                  fontSize: {
-                    xs: "1.25rem",
-                    sm: "1.25rem",
-                    md: "1.25rem",
-                    lg: "1.25rem",
-                    xl: "1.25rem",
-                  },
                 }}
               >
                 Disfruta de una experiencia culinaria única en nuestro
@@ -122,7 +125,7 @@ export default function RestaurantCTA() {
           </Grid>
           <Grid size={{ xs: 12, sm: 12, md: 8 }}>
             <Grid item xs={12} sm={8} md={8}>
-              <Masonry ref={ref} columns={{ xs: 1, sm: 2 }} spacing={1}>
+              <Masonry ref={ref} columns={{ xs: 2, sm: 2 }} spacing={1}>
                 {GridImages.map((item, i) => (
                   <motion.div
                     key={i}
