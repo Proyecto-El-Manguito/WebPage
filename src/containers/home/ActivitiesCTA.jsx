@@ -35,7 +35,7 @@ export default function ActivitiesCTA({ video, imgArray }) {
       {/* Sección de video */}
       <VideoComponent video={images[0]?.video} parallax={true} />
       {/* Sección de transparencia que une las secciones */}
-      <Box
+      {/* <Box
         width={"100%"}
         height="100px"
         sx={{
@@ -45,7 +45,7 @@ export default function ActivitiesCTA({ video, imgArray }) {
           zIndex: 2,
           background: "linear-gradient(to Bottom, #275448, transparent)",
         }}
-      />
+      /> */}
       {/* Sección de fondo */}
       <Stack
         position="absolute"

@@ -67,8 +67,8 @@ export default function Navbar() {
         elevation={scroll ? 2 : 0} // Cambia la sombra según el scroll
         sx={{
           backgroundColor: scroll ? "third.main" : "transparent", // fondo transparente
-          backdropFilter: "blur(8px)", // 🔍 efecto blur
-          WebkitBackdropFilter: "blur(8px)", // soporte para Safari
+          backdropFilter: "blur(1px)", // 🔍 efecto blur
+          WebkitBackdropFilter: "blur(1px)", // soporte para Safari
           color: "#fff", // texto blanco, puedes cambiarlo según tu fondo
           transition: "background-color 0.3s ease", // transición suave
         }}

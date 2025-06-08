@@ -1,8 +1,43 @@
 @import "tailwindcss";
-* {
-  margin: 0;
+
+/* Configuraciones de tailwind si señor ! */
+@theme {
+  --font-playfair: "Playfair Display", "sans-serif";
+  --font-nunito: 'Nunito', Arial, sans-serif;
+  --font-mona: 'Mona sans', Arial, sans-serif;
+
+   --text-xs: 0.75rem;
+  --text-sm: 0.875rem;
+  --text-base: 1rem;
+  --text-lg: clamp(1rem, 0.9643rem + 0.1786vw, 1.125rem);
+  --text-xl: clamp(1.125rem, 1.0893rem + 0.1786vw, 1.25rem);
+  --text-2xl: clamp(1.25rem, 1.1786rem + 0.3571vw, 1.5rem);
+  --text-3xl: clamp(1.375rem, 1.2679rem + 0.5357vw, 1.75rem);
+  --text-4xl: clamp(1.5rem, 1.3571rem + 0.7143vw, 2rem);
+  --text-5xl: clamp(1.625rem, 1.375rem + 1.25vw, 2.5rem);
+  --text-6xl: clamp(1.75rem, 1.3929rem + 1.7857vw, 3rem);
+  --text-7xl: clamp(2.4rem, 1.0268rem + 3.3036vw, 4rem);
+  --text-8xl: clamp(1.875rem, 0.9821rem + 4.4643vw, 5rem);
+  --text-9xl: clamp(2rem, 0.8571rem + 5.7143vw, 6rem);
+  --text-10xl: clamp(2.125rem, 0.4464rem + 8.3929vw, 8rem); 
+}
+
+@theme {
+  --screen-sm:  40rem;
+  --screen-md:  48rem;
+  --screen-lg:  64rem;
+  --screen-xl:  80rem;
+  --screen-2xl: 96rem;
+}
+
+body {
   font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
 }
+
+.font-title {
+  font-size: clamp(1rem, -0.5313rem + 9.68888888889vw, 6.359375rem);
+}
+
 @keyframes blink {
   50% {
     border-color: transparent;
