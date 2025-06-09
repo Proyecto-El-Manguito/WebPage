@@ -46,7 +46,7 @@ export default function LocationCTA() {
           borderRadius: 2,
           boxShadow: 2,
           overflow: "hidden",
-           width: "100%"
+          width: "100%",
         }}
       >
         <Grid
