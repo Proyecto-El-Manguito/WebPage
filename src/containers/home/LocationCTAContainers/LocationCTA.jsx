@@ -3,6 +3,7 @@ import { Grid, Typography, Divider } from "@mui/material";
 import { motion, useInView } from "framer-motion";
 import StyledButton from "../../../components/genericComponents/StyledButton";
 import { useNavigate } from "react-router-dom";
+import StyledLink from "../../../components/genericComponents/StyledLink";
 
 export default function LocationCTA() {
   const ref = useRef(null);
@@ -31,6 +32,7 @@ export default function LocationCTA() {
         display: "flex",
         justifyContent: "center",
         alignItems: "center",
+        width: "100%",
       }}
     >
       <Grid
@@ -38,11 +40,11 @@ export default function LocationCTA() {
         container
         sx={{
           bgcolor: "white.main",
-          minHeight: "50vh",
+          minHeight: "20rem",
           display: "flex",
           justifyContent: "center",
           alignItems: "center",
-          borderRadius: 8,
+          borderRadius: 2,
           boxShadow: 2,
           overflow: "hidden",
           width: "100%",
@@ -117,6 +119,8 @@ export default function LocationCTA() {
               color="third.lighten"
               sx={{
                 textAlign: "left",
+                mb: 6,
+                // mt: 2,
               }}
             >
               Calle Principal, Ciudad, País
@@ -131,7 +135,7 @@ export default function LocationCTA() {
               overflow: "hidden",
             }}
           >
-            <StyledButton
+            {/* <StyledButton
               width={"100%"}
               color="#275448"
               title={"VER MÁS"}
@@ -139,13 +143,19 @@ export default function LocationCTA() {
               sx={{
                 marginTop: 2,
               }}
+            /> */}
+            <StyledLink
+              color="#275448"
+              minWidth="20ch"
+              title={"Ver mas"}
+              href="/location"
             />
           </motion.div>
         </Grid>
         <Grid
           size={{ xs: 12, sm: 12, md: 8 }}
           sx={{
-            height: "50vh",
+            height: "25rem",
           }}
         >
           <motion.div

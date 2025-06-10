@@ -1,159 +1,94 @@
-import React from "react";
-import { useRef } from "react";
+import React, { useRef } from "react";
 import { useInView } from "framer-motion";
-import { useTheme } from "@mui/material/styles";
-import { useMediaQuery } from "@mui/material";
-import { Box, Container, Stack, Typography, Divider } from "@mui/material";
 import { motion } from "framer-motion";
-import { useNavigate } from "react-router-dom";
-import StyledButton from "../../components/genericComponents/StyledButton";
-import img from "../../assets/img_vertical.jpg";
+import { CustomContainer } from "../../components/titleComponents/CustomContainer";
+import { Title } from "../../components/titleComponents/Title";
+import { Box } from "@mui/material";
+import StyledLink from "../../components/genericComponents/StyledLink";
 
-export default function OurHistoryCTA() {
-  const theme = useTheme();
-  const isMobile = useMediaQuery(theme.breakpoints.down("md")); // sm = 600px por defecto
+export default function SectionWithMotion() {
   const ref = useRef(null);
-  const isInView = useInView(ref, { once: false, amount: 0.5 }); // amount = porcentaje visible para activar
-  const navigate = useNavigate();
+
+  const isInView = useInView(ref, { once: true, amount: 0.3 });
+
+  const images = [
+    "https://i.imgur.com/I2m3yBh.jpg",
+    "https://i.imgur.com/X6NhvOq.jpg",
+  ];
+
+
   return (
     <Box
-      ref={ref}
       sx={{
-        width: "100%",
         minHeight: "110vh",
-        height: "calc(auto + 100px)",
+        bgcolor: "white.main",
+        color: "black.main",
         display: "flex",
         justifyContent: "center",
         alignItems: "center",
-        bgcolor: "third.main",
-        overflow: "hidden",
+        borderTopLeftRadius: "20px",
+        borderTopRightRadius: "20px",
+        // marginTop: "-30px", 
         position: "relative",
+        zIndex: 10,
+        boxShadow: "0 -10px 20px rgba(0,0,0,0.1)",
       }}
     >
-      <Container>
-        <Stack
-          mt={8}
-          direction="column"
-          sx={{
-            justifyContent: "center",
-            alignItems: "center",
-          }}
-        >
-          {/*Sección de imagenes */}
-          <Stack
-            spacing={isMobile ? 2 : 4}
-            py={isMobile ? 2 : 4}
-            direction={{
-              xs: "column",
-              sm: "column",
-              md: "row",
-              lg: "row",
-              xl: "row",
-            }}
-            sx={{ justifyContent: "center", width: "100%" }}
-          >
-            {[0.2, 0.3, 0.4, 0.5].map((delay, i) => (
+      <CustomContainer as="section" ref={ref} className="grid !py-16">
+        <div className="items-center gap-16 md:grid md:grid-cols-2">
+          <div className="grid grid-cols-2 gap-4">
+            {images.map((src, i) => (
               <motion.div
                 key={i}
-                initial={
-                  isMobile
-                    ? { x: i % 2 === 0 ? -120 : 120, opacity: 0 }
-                    : { y: i % 2 === 0 ? -120 : 120, opacity: 0 }
-                }
+                initial={{
+                  opacity: 0,
+                  y: i % 2 === 0 ? -80 : 80,
+                }}
                 animate={
-                  isMobile
-                    ? isInView
-                      ? { x: i % 2 === 0 ? -40 : 40, opacity: 1 }
-                      : { x: i % 2 === 0 ? -80 : 80, opacity: 0 }
-                    : isInView
-                    ? { y: i % 2 === 0 ? -40 : 40, opacity: 1 }
-                    : { y: i % 2 === 0 ? -80 : 80, opacity: 0 }
+                  isInView
+                    ? { opacity: 1, y: 0 }
+                    : { opacity: 0, y: i % 2 === 0 ? -80 : 80 }
                 }
-                transition={{ duration: 1, delay, ease: "easeOut" }}
-                style={{ zIndex: 2, position: "relative" }}
+                transition={{ duration: 0.8, delay: 0.2 * i, ease: "easeOut" }}
+                style={{ zIndex: 2 }}
               >
-                <Box
-                  component="img"
-                  src={img}
+                <img
+                  className={
+                    i === 0
+                      ? "w-full rounded-lg"
+                      : "mt-4 w-full rounded-lg lg:mt-10"
+                  }
+                  src={src}
                   alt={`Imagen ${i + 1}`}
-                  sx={{
-                    width: isMobile ? "70vw" : "10vw",
-                    height: isMobile ? "10vh" : "40vh",
-                    objectFit: "cover",
-                    borderRadius: 2,
-                  }}
+                  width={500}
+                  height={500}
                 />
                 <DiamondNumber number={i + 1} isInView={isInView} />
               </motion.div>
             ))}
-          </Stack>
-          {/*Sección de texto y botón*/}
+          </div>
+
           <motion.div
-            initial={{ y: 120, opacity: 0 }}
-            animate={
-              isInView
-                ? { y: isMobile ? -40 : 0, opacity: 1 }
-                : { y: 40, opacity: 0 }
-            }
-            transition={{ duration: 1, delay: 1, ease: "easeOut" }}
-            style={{ zIndex: 2, marginTop: "80px" }}
+            initial={{ opacity: 0, y: 80 }}
+            animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 80 }}
+            transition={{ duration: 0.8, delay: 0.8, ease: "easeOut" }}
+            style={{ zIndex: 2 }}
           >
-            <Typography
-              variant="h4"
-              color="#fff"
-              sx={{
-                textAlign: "center",
-                fontWeight: "bold",
-                mb: 1,
-              }}
-            >
-              Nuestra historia
-            </Typography>
-            <Typography
-              variant="h6"
-              color="#fff"
-              sx={{
-                textAlign: "center",
-              }}
-            >
+            <Title className="mb-4 mt-8 md:mt-0">Nuestra historia</Title>
+            <p className="mb-4">
               ACOAPASER de R. L. es una cooperativa agrícola que desde 1985 ha
               crecido con una administración técnica y estructurada, guiada por
               su consejo, lo que le ha permitido desarrollarse con controles
               organizados en sus actividades agrícolas.
-            </Typography>
-            <Stack
-              direction={"row"}
-              spacing={2}
-              justifyContent={"center"}
-              alignItems={"center"}
-            >
-              <Divider
-                sx={{
-                  width: "25%",
-                  backgroundColor: "#fff",
-                  marginTop: "20px",
-                }}
-              />
-              <Typography color="white" variant="h6">
-                o
-              </Typography>
-              <Divider
-                sx={{
-                  width: "25%",
-                  backgroundColor: "#fff",
-                  marginTop: "20px",
-                }}
-              />
-            </Stack>
-            <Stack justifyContent="center" alignItems="center" mt={-2}>
-              <StyledButton
-                title={"VER MÁS"}
-                onClick={() => navigate("/history")}
-              />
-            </Stack>
+            </p>
+            <p className="mb-4">
+              Nuestros expertos en viajes optimizan cada instante para que tu
+              experiencia sea fluida y enriquecedora de principio a fin.
+            </p>
+            <StyledLink width="22ch" title={"VER MÁS"} href="/history" />
           </motion.div>
-        </Stack>
-      </Container>
+        </div>
+      </CustomContainer>
     </Box>
   );
 }

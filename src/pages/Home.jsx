@@ -1,13 +1,17 @@
-import React from "react";
+import React, { useRef, useEffect } from "react";
+import Lenis from "lenis";
 
 import video from "../assets/hero_video.mp4";
 import piscina from "../assets/piscina.mp4";
 import VideoHero from "../containers/home/VideoHero";
 import OurHistoryCTA from "../containers/home/OurHistoryCTA";
+import OurHistoryCTADemo from "../containers/home/OurHistoryCTADemo";
 import ActivitiesCTA from "../containers/home/ActivitiesCTA";
 import RestaurantCTA from "../containers/home/RestaurantCTA";
 import GalleryCTA from "../containers/home/GalleryCTA";
 import LocationAndMapCTA from "../containers/home/LocationAndMapCTA";
+import AnimatedCards from "../containers/home/AnimatedCards";
+import Footer from "../containers/home/Footer";
 
 const imgArray = [
   {
@@ -55,93 +59,37 @@ const imgArray = [
 ];
 
 export default function Home() {
+  useEffect(() => {
+    const lenis = new Lenis({
+      duration: 1.2,
+      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+      smooth: true,
+      direction: "vertical",
+    });
+
+    function raf(time) {
+      lenis.raf(time);
+      requestAnimationFrame(raf);
+    }
+
+    requestAnimationFrame(raf);
+
+    return () => {
+      lenis.destroy();
+    };
+  }, []);
+
   return (
-    <>
+    <main className="overflow-hidd en">
       <VideoHero video={video} />
-      <OurHistoryCTA />
+      <OurHistoryCTADemo />
+      <AnimatedCards />
       <ActivitiesCTA video={piscina} imgArray={imgArray} />
-      <RestaurantCTA />
-      <GalleryCTA />
-      <LocationAndMapCTA />
-    </>
+      <div className="overflow-hidden">
+        <GalleryCTA />
+        <LocationAndMapCTA />
+      </div>
+      <Footer />
+    </main>
   );
 }
-
-// export function HeroImage() {
-//   return (
-//     <Box
-//       sx={{
-//         width: "100%",
-//         display: "flex",
-//         justifyContent: "center",
-//         alignItems: "center",
-//         bgcolor: "third.main", // Fondo general
-//       }}
-//     >
-//       <Container>
-//         <Stack
-//           my={4}
-//           direction="column"
-//           sx={{
-//             justifyContent: "flex-end",
-//             alignItems: "center",
-//             position: "relative",
-//           }}
-//         >
-//           {/* Caja 1: Transparente */}
-//           <Box
-//             sx={{
-//               height: "100px",
-//               width: "100%",
-//               backgroundColor: "#000",
-//               opacity: 0, // Opacidad de la caja
-//             }}
-//           />
-
-//           {/* Imagen que "atraviesa" ambas cajas */}
-//           <Box
-//             component="img"
-//             src={img}
-//             alt="Imagen destacada"
-//             sx={{
-//               position: "absolute",
-//               top: 0,
-//               transform: {
-//                 xs: "translateY(3%) translateX(10%)",
-//                 sm: "translateY(3%) translateX(40%)",
-//                 md: "translateY(3%) translateX(30%)",
-//                 lg: "translateY(3%) translateX(60%)",
-//                 xl: "translateY(3%) translateX(60%)",
-//               }, // Ajusta cuánto sobresale
-//               width: "400px",
-//               height: "auto",
-//               zIndex: 2,
-//             }}
-//           />
-//           {/* Caja 2: Contenido */}
-//           <Box
-//             bgcolor="secondary.main"
-//             sx={{
-//               height: "300px",
-//               width: "100%",
-//               borderRadius: 4,
-//               paddingTop: "80px", // espacio para no tapar la imagen
-//               zIndex: 1,
-//               position: "relative",
-//               textAlign: "center",
-//             }}
-//           >
-//             <Stack spacing={2} px={2} sx={{ width: "50%" }}>
-//               <Typography variant="h5" color="#fff">
-//                 ¡Bienvenido al turicentro!
-//               </Typography>
-//               <Typography color="#eee">
-//                 Aquí puedes encontrar naturaleza, senderismo y cascadas.
-//               </Typography>
-//             </Stack>
-//           </Box>
-//         </Stack>
-//       </Container>
-//     </Box>
-//   );
-// }

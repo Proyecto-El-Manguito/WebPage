@@ -2,6 +2,7 @@ import React from "react";
 import propTypes from "prop-types";
 import { Box, Typography } from "@mui/material";
 import VideoComponent from "../../components/genericComponents/VideoComponent";
+import { CustomContainer } from "../../components/titleComponents/CustomContainer";
 
 export default function VideoHero({ video }) {
   return (
@@ -9,15 +10,15 @@ export default function VideoHero({ video }) {
       sx={{
         position: "relative",
         minHeight: "calc(auto + 100px)",
-        height: "100vh",
+        height: "105vh",
         width: "100%",
         overflow: "hidden",
       }}
     >
-      <VideoComponent video={video} zIndex={0} />
+      <VideoComponent video={video} zIndex={0} overlayOpacity={0.2} />
 
       {/* 🌫️ Capa de degradado (de abajo hacia arriba) */}
-      <Box
+      {/* <Box
         sx={{
           position: "absolute",
           bottom: 0,
@@ -27,7 +28,7 @@ export default function VideoHero({ video }) {
           background: "linear-gradient(to top, #275448, transparent)",
           zIndex: 3,
         }}
-      />
+      /> */}
 
       {/* 🧩 Contenido sobre todo */}
       <Box
@@ -38,15 +39,19 @@ export default function VideoHero({ video }) {
           height: "100%",
           width: "100%",
           zIndex: 2,
-          display: "flex",
-          justifyContent: "center",
-          alignItems: "center",
           color: "#fff",
-          textShadow: "0 0 10px #000",
-          backgroundColor: "rgba(0, 0, 0, 0.4)",
         }}
       >
-        <Typography variant="h3">¡Bienvenido al Manguito!</Typography>
+        <CustomContainer className="h-[90%] flex justify-start items-end">
+          <h1 className="flex flex-col text-left ">
+            <span className="text-2xl sm:text-4xl lg:text-5xl font-thin leading-tight">
+              ¡Bienvenido a
+            </span>
+            <span className="font-mona text-4xl sm:text-5xl lg:text-6xl font-title font-medium leading-none">
+              El Manguito!
+            </span>
+          </h1>
+        </CustomContainer>
       </Box>
     </Box>
   );

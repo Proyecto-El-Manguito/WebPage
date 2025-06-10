@@ -3,6 +3,7 @@ import { Grid, Stack, Typography } from "@mui/material";
 import { motion, useInView } from "framer-motion";
 import StyledButton from "../../../components/genericComponents/StyledButton";
 import { useNavigate } from "react-router-dom";
+import StyledLink from "../../../components/genericComponents/StyledLink";
 
 export default function ContactUsCTA() {
   const ref = useRef(null);
@@ -28,13 +29,14 @@ export default function ContactUsCTA() {
       size={{ xs: 12, sm: 12, md: 6 }}
       bgcolor="white.main"
       sx={{
-        minHeight: "50vh",
+        minHeight: "22rem",
         display: "flex",
         justifyContent: "center",
         alignItems: "center",
         height: "100%",
-        borderRadius: 8,
+        borderRadius: 2,
         overflow: "hidden",
+        background: "#275448",
       }}
     >
       <Stack
@@ -57,7 +59,7 @@ export default function ContactUsCTA() {
             overflow: "hidden",
           }}
         >
-          <Typography variant="h4" color="third.main" fontWeight={700}>
+          <Typography variant="h4" color="white.main" fontWeight={700}>
             Contáctanos
           </Typography>
         </motion.div>
@@ -72,7 +74,7 @@ export default function ContactUsCTA() {
         >
           <Typography
             variant="h6"
-            color="third.lighten"
+            color="white.darken"
             sx={{
               textAlign: "left",
             }}
@@ -90,12 +92,11 @@ export default function ContactUsCTA() {
             overflow: "hidden",
           }}
         >
-          <StyledButton
-            title="Contáctanos"
-            variant="contained"
-            color="#275448"
-            width="fit-content"
-            onClick={() => navigate("/contacto")}
+          <StyledLink
+            color="#fff"
+            minWidth="20ch"
+            title={"Contáctanos"}
+            href="/contacto"
           />
         </motion.div>
       </Stack>

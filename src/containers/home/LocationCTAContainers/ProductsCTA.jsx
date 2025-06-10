@@ -4,6 +4,7 @@ import { motion, useInView } from "framer-motion";
 import StyledButton from "../../../components/genericComponents/StyledButton";
 import { useNavigate } from "react-router-dom";
 import imgTest from "../../../assets/mango.png";
+import StyledLink from "../../../components/genericComponents/StyledLink";
 
 export default function ProductsCTA() {
   const ref = useRef(null);
@@ -29,18 +30,26 @@ export default function ProductsCTA() {
       size={{ xs: 12, sm: 12, md: 6 }}
       bgcolor="white.main"
       sx={{
-        minHeight: "50vh",
+        minHeight: "22rem",
         display: "flex",
         justifyContent: "center",
         alignItems: "center",
         height: "100%",
-        borderRadius: 8,
+        borderRadius: 2,
         position: "relative",
         overflow: "hidden",
+        border: 3,
+        borderColor: "#275448",
       }}
     >
+      <div className="z-[0] opacity-65">
+        <div className="absolute bottom-1/2 left-0 w-[800px] h-[800px] rounded-full bg-[#bee0d7] flex items-center justify-center">
+          <div className="w-[600px] h-[600px] rounded-full bg-[#7ac1ae]"></div>
+        </div>
+      </div>
+
       {/* Malla animada de fondo */}
-      <Box
+      {/* <Box
         component={motion.div}
         sx={{
           position: "absolute",
@@ -79,7 +88,7 @@ export default function ProductsCTA() {
             }}
           />
         ))}
-      </Box>
+      </Box> */}
 
       {/* Contenido principal */}
       <Stack
@@ -112,12 +121,19 @@ export default function ProductsCTA() {
           },
           {
             component: (
-              <StyledButton
-                title="Ver más"
-                variant="contained"
+              // <StyledButton
+              //   title="Ver más"
+              //   variant="contained"
+              //   color="#275448"
+              //   onClick={() => navigate("/contacto")}
+              //   width="fit-content"
+              // />
+
+              <StyledLink
                 color="#275448"
-                onClick={() => navigate("/contacto")}
-                width="fit-content"
+                minWidth="20ch"
+                title={"Ver más"}
+                href="/contacto"
               />
             ),
           },
