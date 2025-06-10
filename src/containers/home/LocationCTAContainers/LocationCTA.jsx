@@ -155,7 +155,7 @@ export default function LocationCTA() {
         <Grid
           size={{ xs: 12, sm: 12, md: 8 }}
           sx={{
-            height: "60vh",
+            height: "25rem",
           }}
         >
           <motion.div

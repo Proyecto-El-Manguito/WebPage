@@ -25,17 +25,20 @@ export default function OurHistoryCTADemo() {
       src: "https://i.imgur.com/I2m3yBh.jpg",
       y: 0,
       style: {
-        height: "60vh",
-        width: "50vh",
+        // height: "20rem",
+        maxWidth: "27rem",
+        width: "80%",
+        height: "100%",
         zIndex: 1,
       },
     },
     {
       src: "https://i.imgur.com/sFRjABL.jpeg",
       y: lg,
+      className: "absolute",
       style: {
-        left: "25vw",
-        top: "15vh",
+        left: "23rem",
+        top: "12rem",
         height: "40vh",
         width: "30vh",
         zIndex: 2,
@@ -44,9 +47,10 @@ export default function OurHistoryCTADemo() {
     {
       src: "https://i.imgur.com/X6NhvOq.jpg",
       y: md,
+      className: "absolute",
       style: {
         left: "2.5vw",
-        top: "40vh",
+        top: "20rem",
         height: "25vh",
         width: "20vh",
         zIndex: 3,
@@ -78,12 +82,13 @@ export default function OurHistoryCTADemo() {
       >
         <CustomContainer as="section" ref={ref} className="grid !py-16 flex-1">
           <div className="items-center gap-16 md:grid md:grid-cols-2">
-            <div className="flex w-full justify-center relative mt-[5vh] h-full">
+            <div className="flex w-full justify-center relative mt-[5vh] h-screen">
               {images.map((image, i) => (
                 <motion.div
                   style={{ y: image.y, ...image.style }}
                   key={`i_${i}`}
-                  className="absolute"
+                  className={image.className}
+                  // className="absolute"
                 >
                   <img
                     src={image.src}

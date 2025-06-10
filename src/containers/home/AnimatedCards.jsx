@@ -64,7 +64,7 @@ const Card = ({
           scale,
           top: `calc(-7vh + ${i * 10}px)`,
         }}
-        className="relative  w-full rounded-[25px] px-[50px] py-[40px] flex flex-col origin-top h-[80vh]"
+        className="relative  w-full rounded-[25px] px-4 sm:px-6 md:px-10 lg:px-12 py-6 sm:py-8 md:py-10 lg:py-12 flex flex-col origin-top h-[80vh]"
       >
         <div className="h-full grid grid-cols-1 md:grid-cols-12 gap-12">
           <div className="md:col-span-5 self-center">
@@ -78,11 +78,11 @@ const Card = ({
             />
           </div>
           <div className="md:col-span-7 h-full rounded-2xl overflow-hidden">
-            <motion.div style={{ scale: imageScale }} className="w-full h-full">
+            <motion.div style={{ scale: imageScale }} className="w-full h-full aspect-video">
               <img
                 src={src}
                 alt="image"
-                className="w-full h-full object-cover max-h-[600px]"
+                className="w-full h-full object-cover"
               />
             </motion.div>
           </div>
