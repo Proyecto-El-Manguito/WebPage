@@ -1,6 +1,11 @@
 import React, { useEffect, useRef } from "react";
 import PropTypes from "prop-types";
-import { AnimatePresence, motion } from "framer-motion";
+import {
+  AnimatePresence,
+  motion,
+  useScroll,
+  useTransform,
+} from "framer-motion";
 
 export default function VideoComponent({
   video,

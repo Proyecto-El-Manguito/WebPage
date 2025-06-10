@@ -130,7 +130,7 @@ const AnimatedCards = () => {
         className="pt-4 md:pt-8 lg:pt-16"
         sx={{
           zIndex: 2,
-          bgcolor: "#fff",
+          bgcolor: "#F5F5F7",
           borderBottomLeftRadius: "20px",
           borderBottomRightRadius: "20px",
           marginBottom: "-30px",

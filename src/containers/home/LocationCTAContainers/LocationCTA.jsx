@@ -3,6 +3,7 @@ import { Grid, Typography, Divider } from "@mui/material";
 import { motion, useInView } from "framer-motion";
 import StyledButton from "../../../components/genericComponents/StyledButton";
 import { useNavigate } from "react-router-dom";
+import StyledLink from "../../../components/genericComponents/StyledLink";
 
 export default function LocationCTA() {
   const ref = useRef(null);
@@ -31,7 +32,7 @@ export default function LocationCTA() {
         display: "flex",
         justifyContent: "center",
         alignItems: "center",
-        width: "100%"
+        width: "100%",
       }}
     >
       <Grid
@@ -39,7 +40,7 @@ export default function LocationCTA() {
         container
         sx={{
           bgcolor: "white.main",
-          minHeight: "60vh",
+          minHeight: "20rem",
           display: "flex",
           justifyContent: "center",
           alignItems: "center",
@@ -118,6 +119,8 @@ export default function LocationCTA() {
               color="third.lighten"
               sx={{
                 textAlign: "left",
+                mb: 6,
+                // mt: 2,
               }}
             >
               Calle Principal, Ciudad, País
@@ -132,7 +135,7 @@ export default function LocationCTA() {
               overflow: "hidden",
             }}
           >
-            <StyledButton
+            {/* <StyledButton
               width={"100%"}
               color="#275448"
               title={"VER MÁS"}
@@ -140,6 +143,12 @@ export default function LocationCTA() {
               sx={{
                 marginTop: 2,
               }}
+            /> */}
+            <StyledLink
+              color="#275448"
+              minWidth="20ch"
+              title={"Ver mas"}
+              href="/location"
             />
           </motion.div>
         </Grid>
