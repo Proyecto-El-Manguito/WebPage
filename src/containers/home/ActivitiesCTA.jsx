@@ -11,6 +11,7 @@ import {
   useScroll,
   useTransform,
 } from "framer-motion";
+import { CustomContainer } from "../../components/titleComponents/CustomContainer";
 
 export default function ActivitiesCTA({ video, imgArray }) {
   const [images, setImages] = useState(imgArray);
@@ -73,109 +74,102 @@ export default function ActivitiesCTA({ video, imgArray }) {
           pointerEvents: "none",
         }}
       >
-        {/* contenido (video, imagen, etc.) */}
-
         {/* Sección de video */}
-        <VideoComponent video={images[0]?.video} parallax={true} />
-        {/* Sección de transparencia que une las secciones */}
-        {/* <Box
-        width={"100%"}
-        height="100px"
-        sx={{
-          position: "absolute",
-          top: 0,
-          left: 0,
-          zIndex: 2,
-          background: "linear-gradient(to Bottom, #275448, transparent)",
-        }}
-      /> */}
-        {/* Sección de fondo */}
-        <Stack
-          position="absolute"
-          spacing={2}
-          py={4}
-          sx={{
-            width: "100%",
-            maxWidth: "1200px",
-            height: "100%",
-            overflow: "hidden",
-            zIndex: 3,
-          }}
-        >
-          {/* Sección de informacion */}
+        <VideoComponent
+          video={images[0]?.video}
+          parallax={true}
+          overlayOpacity={0.5}
+        />
+
+        <CustomContainer>
+          {/* Sección de fondo */}
           <Stack
+            position="absolute"
+            spacing={2}
+            py={4}
             sx={{
               width: "100%",
+              maxWidth: "1200px",
               height: "100%",
+              overflow: "hidden",
+              zIndex: 3,
             }}
           >
-            <Box
+            {/* Sección de informacion */}
+            <Stack
               sx={{
-                flex: 1,
-                display: "flex",
-                justifyContent: "flex-start",
-                alignItems: "center",
+                width: "100%",
+                height: "100%",
               }}
             >
-              {/* Sección de texto */}
               <Box
                 sx={{
-                  width: "48%",
-                  height: "auto",
+                  flex: 1,
                   display: "flex",
-                  flexDirection: "column",
-                  justifyContent: "center",
-                  alignItems: "flex-start",
-                  p: 2,
-                  ml: "1%",
-                  borderRadius: 2,
+                  justifyContent: "flex-start",
+                  alignItems: "center",
                 }}
               >
-                <Box>
-                  <Typography
-                    variant="body1"
-                    color="white.main"
-                    sx={{
-                      backgroundColor: "#ffffff66",
-                      textAlign: "left",
-                      borderRadius: "50px",
-                      padding: "8px 16px",
-                      width: "fit-content",
-                      mb: 1,
-                    }}
-                  >
-                    Conoce nuestras actividades
-                  </Typography>
-                  <AnimatePresence mode="wait">
-                    <motion.div
-                      key={images[0]?.id}
-                      initial={{ opacity: 0, x: -20 }}
-                      animate={{ opacity: 1, x: 0 }}
-                      exit={{ opacity: 0, x: -20 }}
-                      transition={{ duration: 0.5 }}
+                {/* Sección de texto */}
+                <Box
+                  sx={{
+                    width: "48%",
+                    height: "auto",
+                    display: "flex",
+                    flexDirection: "column",
+                    justifyContent: "center",
+                    alignItems: "flex-start",
+                    p: 2,
+                    ml: "1%",
+                    borderRadius: 2,
+                  }}
+                >
+                  <Box>
+                    <Typography
+                      variant="body1"
+                      color="white.main"
+                      sx={{
+                        backgroundColor: "#ffffff66",
+                        textAlign: "left",
+                        borderRadius: "50px",
+                        padding: "8px 16px",
+                        width: "fit-content",
+                        mb: 1,
+                      }}
                     >
-                      <Typography
-                        variant="h4"
-                        color="white.main"
-                        fontWeight="bold"
+                      Conoce nuestras actividades
+                    </Typography>
+                    <AnimatePresence mode="wait">
+                      <motion.div
+                        key={images[0]?.id}
+                        initial={{ opacity: 0, x: -20 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        exit={{ opacity: 0, x: -20 }}
+                        transition={{ duration: 0.5 }}
                       >
-                        {images[0]?.title}
-                      </Typography>
-                    </motion.div>
-                  </AnimatePresence>
-                  <TypingText
-                    variant="h6"
-                    color="white.darken"
-                    text={images[0]?.subtitle}
-                    speed={40}
-                  />
+                        <Typography
+                          variant="h4"
+                          color="white.main"
+                          fontWeight="bold"
+                        >
+                          {images[0]?.title}
+                        </Typography>
+                      </motion.div>
+                    </AnimatePresence>
+                    <TypingText
+                      variant="h6"
+                      color="white.darken"
+                      text={images[0]?.subtitle}
+                      speed={40}
+                    />
+                  </Box>
                 </Box>
               </Box>
-            </Box>
+            </Stack>
           </Stack>
-        </Stack>
-        {/* Sección de imagenes */}
-        <SliderInfiniteX images={images} />
+          {/* Sección de imagenes */}
+          <SliderInfiniteX images={images} />
+        </CustomContainer>
       </motion.div>
     </Box>
   );
