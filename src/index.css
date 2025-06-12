@@ -38,6 +38,13 @@ body {
   font-size: clamp(1rem, -0.5313rem + 9.68888888889vw, 6.359375rem);
 }
 
+.fill-color {
+    -webkit-text-fill-color: transparent;
+    -webkit-text-stroke-color: #fefefe;
+    -webkit-text-stroke-width: .01em;
+    transition: all .3s ease;
+}
+
 @keyframes blink {
   50% {
     border-color: transparent;

@@ -159,8 +159,10 @@ export default function LocationCTA() {
           }}
         >
           <motion.div
-            initial={{ opacity: 0, x: 500 }}
-            animate={isInView ? { opacity: 1, x: 0 } : {}}
+            initial={{ opacity: 0 }}
+            // initial={{ opacity: 0, x: 500 }}
+            animate={isInView ? { opacity: 1 } : {}}
+            // animate={isInView ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 1 }}
             custom={6}
             style={{
