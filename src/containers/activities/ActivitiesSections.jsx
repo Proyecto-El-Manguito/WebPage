@@ -17,7 +17,7 @@ agroecológicas y cuidando el suelo y los recursos hídricos.`}
       />
 
       <ActivitiesSection
-        title="Gestión Ambiental"
+        title="Turismo Rural"
         description={`Uno de nuestros mayores orgullos es el balneario natural “La Pilona”, 
           un espacio gestionado de forma comunitaria que ofrece a los visitantes una experiencia
            única de contacto con la naturaleza`}

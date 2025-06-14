@@ -2,7 +2,7 @@ import React, { useRef } from "react";
 import { useScroll, useTransform, motion } from "framer-motion";
 import { CustomContainer } from "../../components/titleComponents/CustomContainer";
 
-export default function ParallaxHeroSection({
+export default function IntroSection({
   image,
   title,
   backgroundOpacity = 0.65,
@@ -52,7 +52,7 @@ export default function ParallaxHeroSection({
 
         {/* Texto principal */}
         <h3
-          className={`text-10xl ${overlayTextColor} shadow font-bold relative z-10`}
+          className={`text-10xl ${overlayTextColor} font-bold relative z-10`}
         >
           {title}
         </h3>

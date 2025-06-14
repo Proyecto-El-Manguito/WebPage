@@ -13,19 +13,14 @@ export const navItems = [
   //   icon: HomeIcon,
   // },
   {
-    name: "Historia",
-    to: "/history",
-    icon: HistoryEduIcon,
-  },
-  {
     name: "Actividades",
     to: "/activities",
     icon: CelebrationIcon,
   },
   {
-    name: "Restaurante",
-    to: "/restaurant",
-    icon: FastfoodIcon,
+    name: "Historia",
+    to: "/history",
+    icon: HistoryEduIcon,
   },
   {
     name: "Galería",
@@ -33,12 +28,18 @@ export const navItems = [
     icon: CollectionsIcon,
   },
   {
-    name: "Como llegar",
+    name: "Restaurante*",
+    to: "/restaurant",
+    icon: FastfoodIcon,
+  },
+
+  {
+    name: "Como llegar*",
     to: "/location",
     icon: LocationOnIcon,
   },
   {
-    name: "Contactanos",
+    name: "Contactanos*",
     to: "/contact",
     icon: EmailIcon,
   },
