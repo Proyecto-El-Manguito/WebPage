@@ -10,6 +10,7 @@ import Contact from "../pages/Contact";
 import Products from "../pages/Products";
 import NotFound from "../pages/NotFound";
 import Navbar from "../components/genericComponents/Navbar";
+import ScrollToTopComponent from "../components/genericComponents/ScrollToTopComponent";
 import { useThemeHook } from "../hooks/useTheme";
 import { createTheme, ThemeProvider } from "@mui/material";
 
@@ -18,6 +19,7 @@ export default function MainApp() {
   return (
     <ThemeProvider theme={theme}>
       <Navbar />
+      <ScrollToTopComponent />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/history" element={<History />} />

@@ -7,10 +7,15 @@ import LocationOnIcon from "@mui/icons-material/LocationOn";
 import EmailIcon from "@mui/icons-material/Email";
 import CategoryIcon from "@mui/icons-material/Category";
 export const navItems = [
+  // {
+  //   name: "Inicio",
+  //   to: "/",
+  //   icon: HomeIcon,
+  // },
   {
-    name: "Inicio",
-    to: "/",
-    icon: HomeIcon,
+    name: "Actividades",
+    to: "/activities",
+    icon: CelebrationIcon,
   },
   {
     name: "Historia",
@@ -18,20 +23,11 @@ export const navItems = [
     icon: HistoryEduIcon,
   },
   {
-    name: "Actividades",
-    to: "/activities",
-    icon: CelebrationIcon,
-  },
-  {
-    name: "Restaurante",
-    to: "/restaurant",
-    icon: FastfoodIcon,
-  },
-  {
     name: "Galería",
     to: "/gallery",
     icon: CollectionsIcon,
   },
+
   {
     name: "Como llegar",
     to: "/location",
@@ -41,6 +37,11 @@ export const navItems = [
     name: "Contactanos",
     to: "/contact",
     icon: EmailIcon,
+  },
+  {
+    name: "Restaurante",
+    to: "/restaurant",
+    icon: FastfoodIcon,
   },
   { name: "Productos", to: "/products", icon: CategoryIcon },
 ];

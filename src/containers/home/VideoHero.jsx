@@ -15,7 +15,12 @@ export default function VideoHero({ video }) {
         overflow: "hidden",
       }}
     >
-      <VideoComponent video={video} zIndex={0} overlayOpacity={0.2} />
+      <img
+        src="https://i.imgur.com/m9XneZP.jpeg"
+        alt="Background"
+        className="object-cover w-full h-full brightness-70"
+      />
+      {/* <VideoComponent video={video} zIndex={0} overlayOpacity={0.2} /> */}
 
       {/* 🌫️ Capa de degradado (de abajo hacia arriba) */}
       {/* <Box
