@@ -27,21 +27,21 @@ export const navItems = [
     to: "/gallery",
     icon: CollectionsIcon,
   },
-  {
-    name: "Restaurante*",
-    to: "/restaurant",
-    icon: FastfoodIcon,
-  },
 
   {
-    name: "Como llegar*",
+    name: "Como llegar",
     to: "/location",
     icon: LocationOnIcon,
   },
   {
-    name: "Contactanos*",
+    name: "Contactanos",
     to: "/contact",
     icon: EmailIcon,
+  },
+  {
+    name: "Restaurante",
+    to: "/restaurant",
+    icon: FastfoodIcon,
   },
   { name: "Productos", to: "/products", icon: CategoryIcon },
 ];
