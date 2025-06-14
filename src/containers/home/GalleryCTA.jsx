@@ -7,35 +7,35 @@ import StyledLink from "../../components/genericComponents/StyledLink";
 const slider1 = [
   {
     color: "#e3e5e7",
-    src: "https://images.unsplash.com/photo-1519125323398-675f0ddb6308?auto=format",
+    src: "https://i.imgur.com/MzH83n0.jpeg",
   },
   {
     color: "#d6d7dc",
-    src: "https://i.imgur.com/WhlSpA3_d.webp?maxwidth=520&shape=thumb&fidelity=high",
+    src: "https://i.imgur.com/bs3KZZT.jpeg",
   },
   {
     color: "#e3e3e3",
-    src: "https://i.imgur.com/udZNRrm_d.webp?maxwidth=520&shape=thumb&fidelity=high",
+    src: "https://i.imgur.com/A34rKpz.jpeg",
   },
   {
     color: "#21242b",
-    src: "https://i.imgur.com/Q2IMBBU_d.webp?maxwidth=520&shape=thumb&fidelity=high",
+    src: "https://i.imgur.com/m9XneZP.jpeg",
   },
 ];
 
 const slider2 = [
-  { color: "#d4e3ec", src: "https://i.imgur.com/dUOpIKul.jpg" },
+  { color: "#d4e3ec", src: "https://i.imgur.com/jMoQRYu.jpeg" },
   {
     color: "#e5e0e1",
-    src: "https://i.imgur.com/A2fawKz_d.webp?maxwidth=520&shape=thumb&fidelity=high",
+    src: "https://i.imgur.com/9eRgYPK.jpeg",
   },
   {
     color: "#d7d4cf",
-    src: "https://i.imgur.com/LjFclo9_d.webp?maxwidth=520&shape=thumb&fidelity=high",
+    src: "https://i.imgur.com/Sf6L1aa.jpeg",
   },
   {
     color: "#e1dad6",
-    src: "https://i.imgur.com/p8WCvWR_d.webp?maxwidth=520&shape=thumb&fidelity=high",
+    src: "https://i.imgur.com/MzH83n0.jpeg",
   },
 ];
 

@@ -20,7 +20,7 @@ import {
 import MenuIcon from "@mui/icons-material/Menu";
 import React, { useState } from "react";
 import { navItems } from "../../utils/Const";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import useScrollPosition from "../../hooks/useScrollPosition";
 import FacebookIcon from "@mui/icons-material/Facebook";
 import InstagramIcon from "@mui/icons-material/Instagram";
@@ -102,15 +102,24 @@ const DesktopNav = ({ handleDrawerToggle, handleNavigation }) => {
         >
           <MenuIcon />
         </IconButton>
-        <Typography
-          variant="h6"
-          component="div"
+        <Box
           sx={{
             flexGrow: 1,
           }}
         >
-          El manguito
-        </Typography>
+          <Typography
+            variant="h6"
+            component={Link}
+            to="/"
+            sx={
+              {
+                // flexGrow: 1,
+              }
+            }
+          >
+            El manguito
+          </Typography>
+        </Box>
         <Box
           sx={{
             display: {
@@ -134,7 +143,7 @@ const DesktopNav = ({ handleDrawerToggle, handleNavigation }) => {
             </Button>
           ))}
           {/*Icono de instagram*/}
-          <IconButton
+          {/* <IconButton
             sx={{ marginLeft: 2 }}
             color="inherit"
             onClick={() => {
@@ -142,9 +151,9 @@ const DesktopNav = ({ handleDrawerToggle, handleNavigation }) => {
             }}
           >
             <InstagramIcon />
-          </IconButton>
+          </IconButton> */}
           {/*Icono de facebook*/}
-          <IconButton
+          {/* <IconButton
             sx={{ marginLeft: 2 }}
             color="inherit"
             onClick={() => {
@@ -152,7 +161,7 @@ const DesktopNav = ({ handleDrawerToggle, handleNavigation }) => {
             }}
           >
             <FacebookIcon />
-          </IconButton>
+          </IconButton> */}
         </Box>
       </Stack>
     </Container>

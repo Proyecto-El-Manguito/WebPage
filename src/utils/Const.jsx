@@ -7,11 +7,11 @@ import LocationOnIcon from "@mui/icons-material/LocationOn";
 import EmailIcon from "@mui/icons-material/Email";
 import CategoryIcon from "@mui/icons-material/Category";
 export const navItems = [
-  {
-    name: "Inicio",
-    to: "/",
-    icon: HomeIcon,
-  },
+  // {
+  //   name: "Inicio",
+  //   to: "/",
+  //   icon: HomeIcon,
+  // },
   {
     name: "Historia",
     to: "/history",

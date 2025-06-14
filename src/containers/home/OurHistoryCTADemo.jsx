@@ -22,7 +22,7 @@ export default function OurHistoryCTADemo() {
 
   const images = [
     {
-      src: "https://i.imgur.com/I2m3yBh.jpg",
+      src: "https://i.imgur.com/A34rKpz.jpeg",
       y: 0,
       style: {
         // height: "20rem",
@@ -30,10 +30,11 @@ export default function OurHistoryCTADemo() {
         width: "80%",
         height: "100%",
         zIndex: 1,
+        opacity: 0.95,
       },
     },
     {
-      src: "https://i.imgur.com/sFRjABL.jpeg",
+      src: "https://i.imgur.com/gBYwqdo.jpeg",
       y: lg,
       className: "absolute",
       style: {
@@ -45,7 +46,7 @@ export default function OurHistoryCTADemo() {
       },
     },
     {
-      src: "https://i.imgur.com/X6NhvOq.jpg",
+      src: "https://i.imgur.com/MzH83n0.jpeg",
       y: md,
       className: "absolute",
       style: {
@@ -107,7 +108,7 @@ export default function OurHistoryCTADemo() {
               style={{ zIndex: 2 }}
             >
               <Title large className="mb-8 mt-8 md:mt-0">
-                Nuestra historia
+                Quienes somos
               </Title>
               <p className="mb-4">
                 ACOAPASER de R. L. es una cooperativa agrícola que desde 1985 ha
@@ -116,8 +117,7 @@ export default function OurHistoryCTADemo() {
                 controles organizados en sus actividades agrícolas.
               </p>
               <p className="mb-4">
-                Nuestros expertos en viajes optimizan cada instante para que tu
-                experiencia sea fluida y enriquecedora de principio a fin.
+                Conoce más sobre los recursos y productos con los que contamos.
               </p>
               <StyledLink
                 color="#000"
