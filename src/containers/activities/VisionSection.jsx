@@ -2,6 +2,7 @@ import React, { useRef } from "react";
 import { motion, useInView } from "framer-motion";
 import { Typography } from "@mui/material";
 import { Title } from "../../components/titleComponents/Title";
+import { CustomContainer } from "../../components/titleComponents/CustomContainer";
 
 const fade = {
   hidden: { opacity: 0, y: 60 },
@@ -14,15 +15,6 @@ export default function VisionSection() {
 
   return (
     <section className="bg-white text-black w-full overflow-hidden">
-      {/* Imagen superior */}
-      <div className="w-full h-[60vh] overflow-hidden">
-        <img
-          src="https://i.imgur.com/t83cNlL.png"
-          alt="Visión"
-          className="w-full h-full object-cover"
-        />
-      </div>
-
       {/* Texto central */}
       <motion.div
         ref={ref}
@@ -31,16 +23,28 @@ export default function VisionSection() {
         animate={isInView ? "visible" : "hidden"}
         className="px-6 py-20 "
       >
-        <Title as="h3" large className="mb-4 mt-8 md:mt-0 text-[#029e7f] ">
-          Nuestro compromiso conecta naturaleza, bienestar y diseño consciente.
-        </Title>
-        <Title as="h3" large className="mb-4 mt-8 md:mt-0 font-light">
-          En cada espacio, actividad y experiencia que ofrecemos, buscamos
-          equilibrio. Un equilibrio entre el cuerpo y el entorno, entre lo
-          moderno y lo natural. Es ahí donde la experiencia se convierte en
-          recuerdo, y el recuerdo en identidad.
-        </Title>
+        <CustomContainer>
+          <Title as="h3" large className="mb-4 mt-8 md:mt-0">
+            Nuestro Territorio Productivo
+          </Title>
+          <Title small as="h3" className="mb-4 mt-8 md:mt-0 font-light">
+            La tierra es nuestra herencia y nuestro medio de vida. En estas
+            parcelas, asociadas a la Cooperativa El Manguito R.L., sembramos
+            esperanza con cada ciclo agrícola. Esta imagen retrata una zona de
+            siembra reciente, donde comienzan a brotar cultivos esenciales como
+            el maíz o el frijol, pilares de la alimentación salvadoreña.
+          </Title>
+        </CustomContainer>
       </motion.div>
+
+      {/* Imagen superior */}
+      {/* <div className="w-full h-[60vh] overflow-hidden">
+        <img
+          src="https://i.imgur.com/9HAjD7F.jpeg"
+          alt="Visión"
+          className="w-full h-full object-cover"
+        />
+      </div> */}
     </section>
   );
 }

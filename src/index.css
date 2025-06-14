@@ -20,6 +20,9 @@
   --text-8xl: clamp(1.875rem, 0.9821rem + 4.4643vw, 5rem);
   --text-9xl: clamp(2rem, 0.8571rem + 5.7143vw, 6rem);
   --text-10xl: clamp(2.125rem, 0.4464rem + 8.3929vw, 8rem); 
+  --text-11xl: clamp(2.25rem, 0.0893rem + 10.8929vw, 9rem);
+  --text-12xl: clamp(2.5rem, -0.2679rem + 12.3214vw, 10rem);
+  --text-13xl: clamp(2.75rem, -0.625rem + 13.75vw, 11rem);
 }
 
 @theme {
@@ -32,6 +35,7 @@
 
 body {
   font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+  font-size: 1.1rem;
 }
 
 .font-title {

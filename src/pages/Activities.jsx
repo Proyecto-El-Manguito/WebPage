@@ -5,6 +5,8 @@ import { SectionIntro } from "../components/titleComponents/SectionIntro";
 import Footer from "../containers/home/Footer";
 import ActivitiesSections from "../containers/activities/ActivitiesSections";
 import VisionSection from "../containers/activities/VisionSection";
+import HeroWithScrollEffect from "../components/activitiesComponents/HeroWithScrollEffect";
+import AdditionalActivitiesSections from "../containers/activities/AdditionalActivitiesSections";
 
 export default function Activities() {
   return (
@@ -12,8 +14,6 @@ export default function Activities() {
       <IntroSection
         image="https://i.imgur.com/MzH83n0.jpeg"
         title="Actividades"
-        // backgroundOpacity={0.65}
-        // overlayTextColor="text-white"
       />
 
       <CustomContainer>
@@ -21,9 +21,12 @@ export default function Activities() {
           title={"Conoce nuestras actividades"}
           id="gistory"
         ></SectionIntro>
-        <ActivitiesSections />
-        <VisionSection />
       </CustomContainer>
+      <ActivitiesSections />
+      <HeroWithScrollEffect />
+
+      <VisionSection />
+      <AdditionalActivitiesSections />
       <Footer />
     </main>
   );
