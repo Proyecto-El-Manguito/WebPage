@@ -5,14 +5,22 @@ import PropTypes from "prop-types";
 import { Title } from "../../components/titleComponents/Title";
 import { CustomContainer } from "../../components/titleComponents/CustomContainer";
 import { motion, useScroll, useTransform } from "framer-motion";
+import { useTheme } from "@mui/material";
 
 const ActivitiesSection = ({
   title,
   description,
   imageSrc,
   alt,
+  color, // Color por defecto
   imagePosition = "right", // "left" | "right"
 }) => {
+  //asignar un color por defecto si no se proporciona
+  const theme = useTheme();
+  if (!color) {
+    color = theme.palette.primary.dark; // Usa el color primario del tema
+  }
+
   const desktopDirection =
     imagePosition === "left" ? "md:flex-row" : "md:flex-row-reverse";
 
@@ -33,12 +41,19 @@ const ActivitiesSection = ({
       className={`relative flex flex-col ${desktopDirection} w-full rounded-lg overflow-hidden`}
     >
       {/* Imagen */}
-      <div className="w-full md:w-1/2 h-64 md:h-auto overflow-hidden">
+      <div
+        className="w-full md:w-1/2 h-64 md:h-auto overflow-hidden"
+        style={{
+          borderRadius: imagePosition === "left" ? "0 0 0 20%" : "0 20% 0 0",
+        }}
+      >
         <motion.img
           src={imageSrc}
           alt={alt}
           className="w-full h-full object-cover"
-          style={{ scale: imageScale }}
+          style={{
+            scale: imageScale,
+          }}
         />
       </div>
 
@@ -49,7 +64,7 @@ const ActivitiesSection = ({
       >
         <CustomContainer className="!max-w-3xl">
           <Box component="div" className="flex flex-col justify-center md:pr-8">
-            <Title className="mb-8" large>
+            <Title className="mb-8" large style={{ color: color || "#275448" }}>
               {title}
             </Title>
             <p className="mb-4">{description}</p>
@@ -67,5 +82,6 @@ ActivitiesSection.propTypes = {
   description: PropTypes.string.isRequired,
   imageSrc: PropTypes.string.isRequired,
   alt: PropTypes.string,
+  color: PropTypes.string, // Color opcional para el fondo
   imagePosition: PropTypes.oneOf(["left", "right"]),
 };

@@ -18,7 +18,7 @@ import {
   useTheme,
 } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { navItems } from "../../utils/Const";
 import { Link, useNavigate } from "react-router-dom";
 import useScrollPosition from "../../hooks/useScrollPosition";
@@ -26,6 +26,8 @@ import FacebookIcon from "@mui/icons-material/Facebook";
 import InstagramIcon from "@mui/icons-material/Instagram";
 import CloseIcon from "@mui/icons-material/Close";
 import PropTypes from "prop-types";
+import { AnimatePresence } from "framer-motion";
+import { ShowAnimateComponent } from "./ShowAnimateComponent";
 
 const urlInsta = "https://www.instagram.com/el_manguito/";
 const urlFacebook = "https://www.facebook.com/el_manguito";
@@ -91,13 +93,17 @@ const DesktopNav = ({ handleDrawerToggle, handleNavigation }) => {
           onClick={handleDrawerToggle}
           sx={{
             mr: 2,
+            width: 40,
+            height: 40,
             display: {
-              xs: "block",
-              sm: "block",
-              md: "block",
+              xs: "flex",
+              sm: "flex",
+              md: "flex",
               lg: "none",
               xl: "none",
             },
+            justifyContent: "center",
+            alignItems: "center",
           }}
         >
           <MenuIcon />
@@ -170,12 +176,23 @@ const DesktopNav = ({ handleDrawerToggle, handleNavigation }) => {
 
 const MobileNav = ({ mobileOpen, handleDrawerToggle, handleNavigation }) => {
   const theme = useTheme();
+  const [showBackground, setShowBackground] = useState(false);
+  useEffect(() => {
+    if (!mobileOpen) {
+      setTimeout(() => {
+        setShowBackground(false);
+      }, 500); // Espera 1 segundo antes de mostrar el fondo
+    } else {
+      setShowBackground(true);
+    }
+  }, [mobileOpen]);
   return (
     <nav>
       <Drawer
         variant="temporary"
-        open={mobileOpen}
+        open={showBackground}
         onClose={handleDrawerToggle}
+        anchor="top"
         ModalProps={{
           keepMounted: true,
         }}
@@ -190,28 +207,26 @@ const MobileNav = ({ mobileOpen, handleDrawerToggle, handleNavigation }) => {
           "& .MuiDrawer-paper": {
             width: "100%",
             boxSizing: "border-box",
-            background: `linear-gradient(to Bottom, ${theme.palette.white.main} , ${theme.palette.third.main} 80%)`,
           },
         }}
       >
         <Box
+          bgcolor={"white.main"}
           sx={{
-            display: "flex",
-            flexDirection: "column", // importante: dirección vertical
-            minHeight: "100vh", // o minHeight: '100vh' según tu caso
-            height: "100%", // asegura que el Drawer ocupe toda la altura
+            width: "100%",
+            minHeight: "100vh",
+            height: "100%",
           }}
         >
-          {/*Contenedor nav header */}
-          <Box bgcolor={"transparent"}>
-            {/*Icono de la X */}
-            <Stack
-              direction="row"
-              justifyContent="flex-end"
-              alignItems="center"
-              pt={2}
-              pr={2}
-            >
+          {/*Icono de la X */}
+          <Stack
+            direction="row"
+            justifyContent="flex-end"
+            alignItems="center"
+            pt={2}
+            pr={2}
+          >
+            <ShowAnimateComponent show={mobileOpen} delay={0.5}>
               <IconButton
                 color="inherit"
                 onClick={handleDrawerToggle}
@@ -221,24 +236,26 @@ const MobileNav = ({ mobileOpen, handleDrawerToggle, handleNavigation }) => {
               >
                 <CloseIcon sx={{ color: "white.main" }} />
               </IconButton>
-            </Stack>
-            {/*Logo */}
-            <Box
-              sx={{
-                display: "flex",
-                justifyContent: "center",
-                alignItems: "center",
-                minHeight: "64px",
-                height: "20svh",
-              }}
-            >
+            </ShowAnimateComponent>
+          </Stack>
+          {/*Logo */}
+          <Box
+            sx={{
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+              minHeight: "64px",
+              height: "20svh",
+            }}
+          >
+            <ShowAnimateComponent show={mobileOpen} delay={0.1}>
               <Typography variant="h6">El manguito</Typography>
-            </Box>
+            </ShowAnimateComponent>
           </Box>
-
+          {/* Lista de navegación */}
           <Stack direction="row" justifyContent="center" alignItems="center">
             <List sx={{ width: "80%" }}>
-              {navItems.map((item) => (
+              {navItems.map((item, i) => (
                 <ListItem
                   key={item?.to}
                   disablePadding
@@ -253,12 +270,25 @@ const MobileNav = ({ mobileOpen, handleDrawerToggle, handleNavigation }) => {
                       handleNavigation(item?.to);
                     }}
                   >
-                    {item?.icon && (
-                      <item.icon
-                        sx={{ color: theme.palette.third.main, mr: 1 }}
-                      />
-                    )}
-                    <ListItemText primary={item?.name} />
+                    <ShowAnimateComponent
+                      show={mobileOpen}
+                      delay={i * 0.05 + 0.1}
+                    >
+                      <Stack spacing={2} direction={"row"} alignItems="center">
+                        {item?.icon && (
+                          <item.icon
+                            sx={{
+                              color: theme.palette.third.main,
+                              mr: 1,
+                              fontSize: 30,
+                            }}
+                          />
+                        )}
+                        <Typography fontWeight={500} variant="h5">
+                          {item?.name}
+                        </Typography>
+                      </Stack>
+                    </ShowAnimateComponent>
                   </ListItemButton>
                 </ListItem>
               ))}
@@ -274,22 +304,26 @@ const MobileNav = ({ mobileOpen, handleDrawerToggle, handleNavigation }) => {
             alignItems="center"
             py={1}
           >
-            <IconButton
-              color="inherit"
-              onClick={() => {
-                window.open(urlInsta, "_blank");
-              }}
-            >
-              <InstagramIcon sx={{ color: theme.palette.white.main }} />
-            </IconButton>
-            <IconButton
-              color="inherit"
-              onClick={() => {
-                window.open(urlFacebook, "_blank");
-              }}
-            >
-              <FacebookIcon sx={{ color: theme.palette.white.main }} />
-            </IconButton>
+            <ShowAnimateComponent show={mobileOpen} delay={0.5}>
+              <IconButton
+                color="inherit"
+                onClick={() => {
+                  window.open(urlInsta, "_blank");
+                }}
+              >
+                <InstagramIcon sx={{ color: theme.palette.third.main }} />
+              </IconButton>
+            </ShowAnimateComponent>
+            <ShowAnimateComponent show={mobileOpen} delay={0.5}>
+              <IconButton
+                color="inherit"
+                onClick={() => {
+                  window.open(urlFacebook, "_blank");
+                }}
+              >
+                <FacebookIcon sx={{ color: theme.palette.third.main }} />
+              </IconButton>
+            </ShowAnimateComponent>
           </Stack>
         </Box>
       </Drawer>
