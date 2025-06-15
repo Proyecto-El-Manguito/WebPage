@@ -6,6 +6,7 @@ export function Title({
   large,
   className = "",
   children,
+  color,
   ...props
 }) {
   const baseStyles = "font-poly font-bold tracking-tight";

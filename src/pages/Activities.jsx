@@ -7,6 +7,7 @@ import ActivitiesSections from "../containers/activities/ActivitiesSections";
 import VisionSection from "../containers/activities/VisionSection";
 import HeroWithScrollEffect from "../components/activitiesComponents/HeroWithScrollEffect";
 import AdditionalActivitiesSections from "../containers/activities/AdditionalActivitiesSections";
+import { Divider, Stack } from "@mui/material";
 
 export default function Activities() {
   return (
@@ -19,7 +20,8 @@ export default function Activities() {
       <CustomContainer>
         <SectionIntro
           title={"Conoce nuestras actividades"}
-          id="gistory"
+          id="history"
+          divider={true}
         ></SectionIntro>
       </CustomContainer>
       <ActivitiesSections />

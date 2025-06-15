@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import PropTypes from "prop-types";
-import { Box, Stack, Typography } from "@mui/material";
+import { Box, Divider, Stack, Typography } from "@mui/material";
 import VideoComponent from "../../components/genericComponents/VideoComponent";
 import TypingText from "../../components/genericComponents/TypingText";
 import SliderInfiniteX from "../../components/homeComponents/SliderInfiniteX";

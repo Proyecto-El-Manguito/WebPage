@@ -18,7 +18,8 @@ export default function History() {
       <CustomContainer>
         <SectionIntro
           title={"Conoce nuestra historia"}
-          id="gistory"
+          id="history"
+          divider={true}
         ></SectionIntro>
         <TimelineSection />
       </CustomContainer>

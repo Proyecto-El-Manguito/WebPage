@@ -1,5 +1,7 @@
 import React from "react";
 import { motion } from "framer-motion";
+import { useTheme } from "@emotion/react";
+import { Divider } from "@mui/material";
 
 export function SectionIntro({
   title,
@@ -9,8 +11,14 @@ export function SectionIntro({
   smaller = false,
   vertical = false,
   className = "py-8 md:py-10 my-6 md:my-8",
+  color,
+  divider = false,
   ...props
 }) {
+  const theme = useTheme();
+  if (!color) {
+    color = theme.palette.third.main; // Default color if not provided
+  }
   return (
     <div {...props} className={className}>
       <motion.div
@@ -29,35 +37,70 @@ export function SectionIntro({
           <>
             <h2
               id={id}
+              style={{ color }}
               className={`scroll-top  font-poly font-bold title ${
                 smaller ? "text-5xl" : "text-7xl"
               }`}
             >
               {title}
             </h2>
+            {divider && (
+              <Divider
+                sx={{
+                  mt: 2,
+                  backgroundColor: "secondary.main",
+                  width: "10%",
+                  height: "4px",
+                }}
+              />
+            )}
             <div className="mt-6 text-lg ">{children}</div>
           </>
         ) : children ? (
           <div className="grid md:grid-cols-2 w-full gap-8">
             <h2
               id={id}
+              style={{ color }}
               className={`scroll-top  font-poly font-bold title ${
                 smaller ? "text-5xl" : "text-7xl"
               }`}
             >
               {title}
             </h2>
+            {divider && (
+              <Divider
+                sx={{
+                  mt: 2,
+                  backgroundColor: "secondary.main",
+                  width: "10%",
+                  height: "4px",
+                }}
+              />
+            )}
             <div className="text-lg ">{children}</div>
           </div>
         ) : (
-          <h2
-            id={id}
-            className={`scroll-top  font-poly font-bold title ${
-              smaller ? "text-5xl" : "text-7xl"
-            }`}
-          >
-            {title}
-          </h2>
+          <>
+            <h2
+              id={id}
+              style={{ color }}
+              className={`scroll-top  font-poly font-bold title ${
+                smaller ? "text-5xl" : "text-7xl"
+              }`}
+            >
+              {title}
+            </h2>
+            {divider && (
+              <Divider
+                sx={{
+                  mt: 2,
+                  backgroundColor: "secondary.main",
+                  width: "10%",
+                  height: "4px",
+                }}
+              />
+            )}
+          </>
         )}
       </motion.div>
     </div>

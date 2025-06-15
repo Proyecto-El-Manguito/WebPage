@@ -1,6 +1,7 @@
 import React, { useRef } from "react";
 import { useScroll, useTransform, motion } from "framer-motion";
 import { CustomContainer } from "../../components/titleComponents/CustomContainer";
+import { ShowAnimateComponent } from "./ShowAnimateComponent";
 
 export default function IntroSection({
   image,
@@ -51,12 +52,33 @@ export default function IntroSection({
         </h3>
 
         {/* Texto principal */}
-        <h3
-          className={`text-10xl ${overlayTextColor} font-bold relative z-10`}
-        >
-          {title}
-        </h3>
+        {/* Texto animado letra por letra */}
+        <AnimatedTitle text={title} className={overlayTextColor} />
       </CustomContainer>
     </div>
+  );
+}
+
+export function AnimatedTitle({ text, className = "" }) {
+  const letters = text.split("");
+
+  return (
+    <h3 className={`text-10xl font-bold relative z-10 ${className}`}>
+      {letters.map((char, i) => (
+        <motion.span
+          key={i}
+          initial={{ opacity: 1, y: -32, x: -32 }}
+          animate={{ opacity: 1, y: 0, x: 0 }}
+          transition={{
+            delay: 0.25, // efecto secuencial letra por letra
+            duration: 0.5,
+            ease: "easeOut",
+          }}
+          style={{ display: "inline-block" }}
+        >
+          {char === " " ? "\u00A0" : char}
+        </motion.span>
+      ))}
+    </h3>
   );
 }

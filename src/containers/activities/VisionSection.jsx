@@ -1,6 +1,6 @@
 import React, { useRef } from "react";
 import { motion, useInView } from "framer-motion";
-import { Typography } from "@mui/material";
+import { Box, Typography, useTheme } from "@mui/material";
 import { Title } from "../../components/titleComponents/Title";
 import { CustomContainer } from "../../components/titleComponents/CustomContainer";
 
@@ -12,6 +12,7 @@ const fade = {
 export default function VisionSection() {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true });
+  const theme = useTheme();
 
   return (
     <section className="bg-white text-black w-full overflow-hidden">
@@ -24,7 +25,12 @@ export default function VisionSection() {
         className="px-6 py-20 "
       >
         <CustomContainer>
-          <Title as="h3" large className="mb-4 mt-8 md:mt-0">
+          <Title
+            as="h3"
+            large
+            className="mb-4 mt-8 md:mt-0 "
+            style={{ color: theme.palette.third.main }}
+          >
             Nuestro Territorio Productivo
           </Title>
           <Title small as="h3" className="mb-4 mt-8 md:mt-0 font-light">
