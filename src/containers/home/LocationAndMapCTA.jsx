@@ -14,7 +14,7 @@ import { motion, useInView, useScroll, useTransform } from "framer-motion";
 import React, { useRef } from "react";
 
 export default function LocationAndMapCTA() {
- const ref = useRef(null);
+  const ref = useRef(null);
 
   const container = useRef(null);
   const { scrollYProgress } = useScroll({
@@ -66,7 +66,6 @@ export default function LocationAndMapCTA() {
           </Grid>
         </Stack>
       </CustomContainer>
-      
 
       {/* <motion.div style={{ height }} className="relative">
         <div className="absolute left-[-10%] h-[1550%] w-[120%] rounded-b-[50%] bg-red-500 z-[1000] shadow-[0px_60px_50px_rgba(0,0,0,0.748)]"></div>
