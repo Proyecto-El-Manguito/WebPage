@@ -1,6 +1,7 @@
 import React, { useRef } from "react";
 import { motion, useInView } from "framer-motion";
 import { Title } from "../../components/titleComponents/Title";
+import { useTheme } from "@mui/material";
 
 const timelineData = [
   {
@@ -32,6 +33,7 @@ const timelineData = [
 const TimelineItem = ({ item, index }) => {
   const ref = useRef(null);
   const inView = useInView(ref, { once: true });
+  const theme = useTheme();
 
   const isLeft = index % 2 === 0;
 
@@ -50,7 +52,12 @@ const TimelineItem = ({ item, index }) => {
               <p className="text-sm text-gray-500">
                 {item.location} {item.year}
               </p>
-              <Title as="h3" large className="mb-4 mt-8 md:mt-0">
+              <Title
+                as="h3"
+                large
+                className="mb-4 mt-8 md:mt-0"
+                style={{ color: theme.palette.third.main }}
+              >
                 {item.title}
               </Title>
 
@@ -67,7 +74,10 @@ const TimelineItem = ({ item, index }) => {
 
       {/* Línea vertical + punto */}
       <div className="absolute left-1/2 transform -translate-x-1/2 h-full flex flex-col items-center">
-        <div className="w-4 h-4 bg-red-600 rounded-full shadow-md ring-4 ring-white z-10" />
+        <div
+          style={{ backgroundColor: theme.palette.secondary.main }}
+          className="w-4 h-4 rounded-full shadow-md ring-4 ring-white z-10"
+        />
         <div className="w-[2px] h-full bg-gray-300" />
       </div>
 
@@ -85,7 +95,12 @@ const TimelineItem = ({ item, index }) => {
                 {item.location} {item.year}
               </p>
 
-              <Title as="h3" large className="mb-4 mt-8 md:mt-0">
+              <Title
+                as="h3"
+                large
+                className="mb-4 mt-8 md:mt-0"
+                style={{ color: theme.palette.third.main }}
+              >
                 {item.title}
               </Title>
               <p className="text-gray-700 mb-4">{item.description}</p>
