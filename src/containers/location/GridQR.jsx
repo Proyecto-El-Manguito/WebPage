@@ -6,7 +6,7 @@ import QrWaze from "../../assets/QrWaze.jpg";
 export function GridQR() {
   const theme = useTheme();
   return (
-    <Grid container spacing={2}>
+    <Grid container spacing={2} pb={12}>
       <Grid
         size={{ xs: 12, sm: 4 }}
         px={2}
@@ -26,8 +26,15 @@ export function GridQR() {
             )}, 0.6)`,
             transform: "scale(1.02)",
           },
+          overflow: "hidden",
+          position: "relative",
         }}
       >
+        <div className="z-[-2] opacity-65">
+          <div className="absolute bottom-[-40%] left-[-40%] w-[350px] h-[350px] rounded-full bg-[#40587a30] flex items-center justify-center">
+            <div className="w-[250px] h-[250px] rounded-full bg-[#2d3e5650]"></div>
+          </div>
+        </div>
         <img
           src={QrMaps}
           alt="Cooperativa El Manguito"
@@ -37,7 +44,7 @@ export function GridQR() {
           spacing={1}
           justifyContent={"center"}
           alignItems={"center"}
-          sx={{ textAlign: "center", mt: 2 }}
+          sx={{ textAlign: "center", mt: 2, zIndex: 2 }}
         >
           <Typography
             variant="h5"
@@ -52,14 +59,19 @@ export function GridQR() {
             variant="body1"
             component="h3"
             color="text.secondary"
-            sx={{ textAlign: "center", mb: 2 }}
+            sx={{ textAlign: "center", mb: 2, zIndex: 1, }}
           >
             Encuentranos en
           </Typography>
           <img
             src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/bd/Google_Maps_Logo_2020.svg/512px-Google_Maps_Logo_2020.svg.png"
             alt="Google Maps"
-            style={{ width: "100px", height: "auto", borderRadius: "8px" }}
+            style={{
+              width: "100px",
+              height: "auto",
+              borderRadius: "8px",
+              zIndex: 1,
+            }}
           />
         </Stack>
       </Grid>
@@ -113,8 +125,8 @@ export function GridQR() {
             Encuentranos en
           </Typography>
           <img
-             src="https://files.brandlogos.net/svg/KWGOdcgoGJ/waze-app-icon-logo-brandlogos.net_izn3bglse.svg"
-              alt="Waze"
+            src="https://files.brandlogos.net/svg/KWGOdcgoGJ/waze-app-icon-logo-brandlogos.net_izn3bglse.svg"
+            alt="Waze"
             style={{ width: "90px", height: "auto", borderRadius: "8px" }}
           />
         </Stack>
@@ -138,10 +150,19 @@ export function GridQR() {
             )}, 0.6)`,
             transform: "scale(1.02)",
           },
+          overflow: "hidden",
+          position: "relative",
         }}
       >
+        <div className="z-[-2] opacity-65">
+          <div className="absolute bottom-[-40%] right-[-40%] w-[350px] h-[350px] rounded-full bg-[#40587a30] flex items-center justify-center">
+            <div className="w-[250px] h-[250px] rounded-full bg-[#2d3e5650]"></div>
+          </div>
+        </div>
+
         <img
-          src="https://wpmudev.com/blog/wp-content/uploads/2021/04/qr-code-example.png"
+          // TODO : Cesar cambiame esto
+          src={QrMaps}
           alt="Cooperativa El Manguito"
           style={{ width: "100%", height: "auto", borderRadius: "16px" }}
         />

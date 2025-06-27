@@ -96,7 +96,7 @@ export default function ContactUsCTA() {
             color="#fff"
             minWidth="20ch"
             title={"Contáctanos"}
-            href="/contacto"
+            to="/contacto"
           />
         </motion.div>
       </Stack>

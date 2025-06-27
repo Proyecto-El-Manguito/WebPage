@@ -148,7 +148,7 @@ export default function LocationCTA() {
               color="#275448"
               minWidth="20ch"
               title={"Ver mas"}
-              href="/location"
+              to="/location"
             />
           </motion.div>
         </Grid>

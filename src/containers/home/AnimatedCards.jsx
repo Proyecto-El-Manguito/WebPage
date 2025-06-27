@@ -74,7 +74,7 @@ const Card = ({
               color="#000"
               width="22ch"
               title={"VER MÁS"}
-              href="/history"
+              to="/history"
             />
           </div>
           <div className="md:col-span-7 h-full rounded-2xl overflow-hidden">
