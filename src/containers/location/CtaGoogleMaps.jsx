@@ -2,6 +2,8 @@ import React, { useRef } from "react";
 import { Box, Button, Stack, Typography } from "@mui/material";
 import { motion, useInView } from "framer-motion";
 import LocationPinIcon from "@mui/icons-material/LocationPin";
+import { Title } from "../../components/titleComponents/Title";
+import MaskText from "../../components/genericComponents/MaskText";
 
 export function CtaGoogleMaps() {
   const ref = useRef(null);
@@ -14,17 +16,16 @@ export function CtaGoogleMaps() {
       spacing={2}
       alignItems="center"
       justifyContent="center"
-      my={6}
       py={6}
       px={2}
       sx={{
         position: "relative",
         textAlign: "center",
-        bgcolor: "transparent",
         borderRadius: 4,
         overflow: "hidden",
-        minHeight: "300px",
-        height: "auto",
+        minHeight: "600px",
+        height: "80vh",
+        m: 2,
       }}
     >
       {/* Contenedor de imagen + overlay */}
@@ -37,7 +38,7 @@ export function CtaGoogleMaps() {
           left: 0,
         }}
       >
-        <motion.img
+        {/* <motion.img
           src="https://i.imgur.com/MgFcWPM.jpeg"
           alt="Cooperativa El Manguito"
           initial={{ opacity: 0, scale: 0.95 }}
@@ -54,11 +55,24 @@ export function CtaGoogleMaps() {
             top: 0,
             left: 0,
           }}
+        /> */}
+        <img
+          src="https://i.imgur.com/MgFcWPM.jpeg"
+          alt="Cooperativa El Manguito"
+          style={{
+            width: "100%",
+            height: "100%",
+            objectFit: "cover",
+            borderRadius: "16px",
+            position: "absolute",
+            top: 0,
+            left: 0,
+          }}
         />
 
         <motion.div
           initial={{ opacity: 0 }}
-          animate={isInView ? { opacity: 0.4 } : { opacity: 0 }}
+          animate={isInView ? { opacity: 0.1 } : { opacity: 0 }}
           transition={{ duration: 0.6 }}
           style={{
             position: "absolute",
@@ -77,11 +91,17 @@ export function CtaGoogleMaps() {
         transition={{ duration: 0.6, ease: "easeOut" }}
         style={{ zIndex: 2, textAlign: "center" }}
       >
-        <Typography variant="h4" fontWeight="bold" color="white" gutterBottom>
+        {/* <Typography variant="h4" fontWeight="bold" color="white" gutterBottom>
           ¿Ya sabes cómo llegar?
-        </Typography>
+        </Typography> */}
+        <MaskText
+          text="¿Ya sabes cómo llegar?"
+           margin="0%"
+          duration={0.3}
+          className={`text-8xl leading-[normal] font-bold relative text-white`}
+        />
 
-        <Typography variant="body1" color="white" sx={{ mb: 2 }}>
+        <Typography variant="body1" color="white" sx={{ mb: 2, mt: 2 }}>
           Te invitamos a visitar nuestra cooperativa. Haz clic para abrir la
           ruta en Google Maps.
         </Typography>

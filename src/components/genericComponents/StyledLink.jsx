@@ -2,8 +2,11 @@ import React, { useRef } from "react";
 import { Button, useMediaQuery, useTheme } from "@mui/material";
 import { motion, useAnimation } from "framer-motion";
 
+import { Link as RouterLink } from "react-router-dom";
+
 export default function StyledLink({
   title,
+  to,
   href,
   color = "#fff",
   width,
@@ -31,15 +34,15 @@ export default function StyledLink({
     });
   };
 
+  const isInternal = Boolean(to);
+
   return (
     <Button
       ref={buttonRef}
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
-      component="a"
-      href={href}
-      target={target}
-      rel={rel}
+      component={isInternal ? RouterLink : "a"}
+      {...(isInternal ? { to } : { href, target, rel })}
       variant="outlined"
       disableRipple
       sx={{
@@ -63,7 +66,6 @@ export default function StyledLink({
       {...props}
     >
       {title}
-
       <motion.div
         animate={controls}
         initial={{ top: "100%", opacity: 1 }}

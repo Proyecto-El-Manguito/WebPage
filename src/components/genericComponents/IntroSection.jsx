@@ -2,6 +2,7 @@ import React, { useRef } from "react";
 import { useScroll, useTransform, motion } from "framer-motion";
 import { CustomContainer } from "../../components/titleComponents/CustomContainer";
 import { ShowAnimateComponent } from "./ShowAnimateComponent";
+import MaskText from "./MaskText";
 
 export default function IntroSection({
   image,
@@ -45,15 +46,27 @@ export default function IntroSection({
 
       <CustomContainer className="relative">
         {/* Texto detrás para sombra */}
-        <h3
+        {/* <h3
           className={`text-10xl fill-color font-bold absolute -top-2 left-0 z-0 opacity-65`}
         >
           {title}
-        </h3>
+        </h3> */}
+
+        <MaskText
+          text={title}
+          margin="0%"
+          duration={0.5}
+          divClassName={`text-10xl fill-color font-bold !absolute -top-2 left-0 z-0 opacity-65 text-white`}
+        />
 
         {/* Texto principal */}
-        {/* Texto animado letra por letra */}
-        <AnimatedTitle text={title} className={overlayTextColor} />
+        {/* <AnimatedTitle text={title} className={overlayTextColor} /> */}
+        <MaskText
+          text={title}
+          margin="0%"
+          duration={0.5}
+          className={`text-10xl font-bold relative z-10 ${overlayTextColor}`}
+        />
       </CustomContainer>
     </div>
   );

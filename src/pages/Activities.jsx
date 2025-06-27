@@ -8,10 +8,14 @@ import VisionSection from "../containers/activities/VisionSection";
 import HeroWithScrollEffect from "../components/activitiesComponents/HeroWithScrollEffect";
 import AdditionalActivitiesSections from "../containers/activities/AdditionalActivitiesSections";
 import { Divider, Stack } from "@mui/material";
+import CollageBackground from "../containers/activities/CollageBackground";
+import LoaderAnimation from "../routes/LoaderAnimation";
 
 export default function Activities() {
   return (
     <main>
+      <LoaderAnimation />
+
       <IntroSection
         image="https://i.imgur.com/MzH83n0.jpeg"
         title="Actividades"
@@ -29,6 +33,7 @@ export default function Activities() {
 
       <VisionSection />
       <AdditionalActivitiesSections />
+      <CollageBackground />
       <Footer />
     </main>
   );

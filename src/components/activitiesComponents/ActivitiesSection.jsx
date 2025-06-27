@@ -1,4 +1,3 @@
-// src/components/layout/ActivitiesSection.jsx
 import React, { useRef } from "react";
 import Box from "@mui/material/Box";
 import PropTypes from "prop-types";
@@ -12,8 +11,8 @@ const ActivitiesSection = ({
   description,
   imageSrc,
   alt,
-  color, // Color por defecto
-  imagePosition = "right", // "left" | "right"
+  color,
+  imagePosition = "right",
 }) => {
   //asignar un color por defecto si no se proporciona
   const theme = useTheme();
@@ -28,7 +27,7 @@ const ActivitiesSection = ({
 
   const { scrollYProgress } = useScroll({
     target: sectionRef,
-    offset: ["start end", "start start"], // comienza cuando el elemento entra
+    offset: ["start end", "start start"],
   });
 
   // Imagen inicia grande y se reduce conforme hace scroll
@@ -44,7 +43,7 @@ const ActivitiesSection = ({
       <div
         className="w-full md:w-1/2 h-64 md:h-auto overflow-hidden"
         style={{
-          borderRadius: imagePosition === "left" ? "0 0 0 20%" : "0 20% 0 0",
+          borderRadius: imagePosition === "left" ? "0 0 0 5%" : "0 5% 0 0",
         }}
       >
         <motion.img

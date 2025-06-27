@@ -34,12 +34,12 @@ const HeroLayeredSection = () => {
 
       {/* Texto centrado */}
       {/*  mix-blend-difference */}
-      <motion.h1
+      <motion.h2
         style={{ opacity, scale }}
         className="uppercase scale-y-120 -translate-y-7 z-20 text-white text-13xl font-bold text-center pointer-events-none"
       >
         Agricultura
-      </motion.h1>
+      </motion.h2>
     </section>
   );
 };

@@ -133,7 +133,7 @@ export default function ProductsCTA() {
                 color="#275448"
                 minWidth="20ch"
                 title={"Ver más"}
-                href="/contacto"
+                to="/contacto"
               />
             ),
           },

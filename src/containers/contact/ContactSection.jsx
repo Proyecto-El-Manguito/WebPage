@@ -62,7 +62,7 @@ const ContactSection = () => {
           component="form"
           onSubmit={handleSubmit}
           noValidate
-          className="flex flex-col gap-6 bg-white rounded-3xl shadow-xl p-8 md:p-12"
+          className="flex flex-col gap-6 bg-white rounded-3xl p-8 md:p-12"
         >
           <TextField
             fullWidth

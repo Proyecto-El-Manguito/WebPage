@@ -49,8 +49,31 @@ body {
     transition: all .3s ease;
 }
 
+.fill-color-bold {
+    -webkit-text-fill-color: transparent;
+    -webkit-text-stroke-color: #fefefe;
+    -webkit-text-stroke-width: .02em;
+    transition: all .3s ease;
+}
+
 @keyframes blink {
   50% {
     border-color: transparent;
   }
+}
+
+.loader{
+  height: calc(100vh + 200px);
+  width: 100%;
+  position: fixed;
+}
+.loader svg{
+  height: 100%;
+  width: 100%;
+}
+
+.loader svg path{
+  stroke: #fff;
+  stroke-width: 1px;
+  fill: #fff; /* Relleno blanco */
 }
