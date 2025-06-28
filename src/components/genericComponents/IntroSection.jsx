@@ -56,6 +56,7 @@ export default function IntroSection({
           text={title}
           margin="0%"
           duration={0.5}
+          startDelay={0.7}
           divClassName={`text-10xl fill-color font-bold !absolute -top-2 left-0 z-0 opacity-65 text-white`}
         />
 
@@ -64,7 +65,7 @@ export default function IntroSection({
         <MaskText
           text={title}
           margin="0%"
-          duration={0.5}
+          startDelay={0.7}
           className={`text-10xl font-bold relative z-10 ${overlayTextColor}`}
         />
       </CustomContainer>

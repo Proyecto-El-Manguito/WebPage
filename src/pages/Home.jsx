@@ -12,7 +12,6 @@ import GalleryCTA from "../containers/home/GalleryCTA";
 import LocationAndMapCTA from "../containers/home/LocationAndMapCTA";
 import AnimatedCards from "../containers/home/AnimatedCards";
 import Footer from "../containers/home/Footer";
-import LoaderAnimation from "../routes/LoaderAnimation";
 
 const imgArray = [
   {
@@ -82,8 +81,6 @@ export default function Home() {
 
   return (
     <main className="overflow-hidd en">
-      <LoaderAnimation />
-
       <VideoHero video={video} />
       <OurHistoryCTADemo />
       <AnimatedCards />

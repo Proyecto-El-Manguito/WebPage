@@ -1,36 +1,51 @@
-import React, { useRef, useEffect } from "react";
+import React, { useRef, useEffect, useState } from "react";
+import { useLocation } from "react-router-dom";
+
+// Duraciones (ajustables)
+const FADE_DURATION = 300; // ms
+const ANIMATION_DURATION = 600; // ms
+const DELAY_BEFORE_ANIMATE = 200; // ms
 
 const LoaderAnimation = () => {
   const loader = useRef(null);
   const path = useRef(null);
+  const location = useLocation();
 
   const initialCurve = 200;
-  const duration = 600;
-  const animating = useRef(false);
-  const start = useRef();
+  const [visible, setVisible] = useState(false);
+  const [fade, setFade] = useState(false);
 
-  // Usa el alto completo de la ventana
-  const getLoaderHeight = () => window.innerHeight + 200; // 200px extra si deseas efecto fuera de pantalla
+  // Función para alto dinámico
+  const getLoaderHeight = () => window.innerHeight + 200;
 
+  // Reproduce animación cada vez que cambia la ruta
   useEffect(() => {
     let animationFrameId;
     let timeoutId;
+    let fadeTimeoutId;
+    let animating = true;
+    let start = undefined;
 
-    const animate = (timestamp) => {
-      if (!animating.current) return;
+    setVisible(true);         // Montar
+    setFade(true);            // Inicia Fade In
 
-      if (start.current === undefined) {
-        start.current = timestamp;
-      }
-      const elapsed = timestamp - start.current;
+    // Inicia la animación después del fade
+    timeoutId = setTimeout(() => {
+      animate();
+    }, DELAY_BEFORE_ANIMATE);
+
+    function animate(timestamp) {
+      if (!animating) return;
+      if (start === undefined && timestamp !== undefined) start = timestamp;
+      const elapsed = timestamp && start ? timestamp - start : 0;
 
       let newCurve;
       let final = false;
-      if (elapsed >= duration) {
+      if (elapsed >= ANIMATION_DURATION) {
         newCurve = initialCurve - 200;
         final = true;
       } else {
-        newCurve = easeOutQuad(elapsed, initialCurve, -200, duration);
+        newCurve = easeOutQuad(elapsed, initialCurve, -200, ANIMATION_DURATION);
       }
 
       setPath(newCurve);
@@ -38,38 +53,40 @@ const LoaderAnimation = () => {
       if (loader.current) {
         const top = final
           ? -getLoaderHeight()
-          : easeOutQuad(elapsed, 0, -getLoaderHeight(), duration);
+          : easeOutQuad(elapsed, 0, -getLoaderHeight(), ANIMATION_DURATION);
         loader.current.style.top = top + "px";
       }
 
       if (!final) {
         animationFrameId = requestAnimationFrame(animate);
+      } else {
+        // Fade out después de animar la curva
+        fadeTimeoutId = setTimeout(() => setFade(false), 200); // Comienza Fade Out
+        // Remueve del DOM después del fade
+        setTimeout(() => setVisible(false), FADE_DURATION + 200);
       }
-    };
+    }
 
-    animating.current = true;
     setPath(initialCurve);
-    timeoutId = setTimeout(() => {
-      animationFrameId = requestAnimationFrame(animate);
-    }, 500);
+    if (loader.current) {
+      loader.current.style.top = "0px";
+    }
 
     return () => {
-      animating.current = false;
+      animating = false;
       clearTimeout(timeoutId);
+      clearTimeout(fadeTimeoutId);
       cancelAnimationFrame(animationFrameId);
-
-      setPath(initialCurve - 200);
-      if (loader.current) {
-        loader.current.style.top = -getLoaderHeight() + "px";
-      }
+      setFade(false);
+      setTimeout(() => setVisible(false), FADE_DURATION); // Asegura desmontaje
     };
-  }, []);
+    // eslint-disable-next-line
+  }, [location.pathname]);
 
   const easeOutQuad = (time, start, end, duration) => {
     return -end * (time /= duration) * (time - 2) + start;
   };
 
-  // Setea la curva SVG de acuerdo al alto de la pantalla
   const setPath = (curve) => {
     if (!path.current || !loader.current) return;
     const width = window.innerWidth;
@@ -81,21 +98,26 @@ const LoaderAnimation = () => {
     );
   };
 
+  // CSS para Fade
+  const loaderStyle = {
+    position: "fixed",
+    left: 0,
+    right: 0,
+    top: 0,
+    width: "100vw",
+    height: getLoaderHeight() + "px",
+    pointerEvents: "none",
+    zIndex: 100,
+    opacity: fade ? 1 : 0,
+    transition: `opacity ${FADE_DURATION}ms cubic-bezier(.4,0,.2,1)`,
+    willChange: "opacity",
+  };
+
+  // Solo renderiza si visible
+  if (!visible) return null;
+
   return (
-    <div
-      ref={loader}
-      className="loader z-[100]"
-      style={{
-        position: "fixed",
-        left: 0,
-        right: 0,
-        top: 0,
-        width: "100vw",
-        height: getLoaderHeight() + "px",
-        pointerEvents: "none",
-        zIndex: 100,
-      }}
-    >
+    <div ref={loader} className="loader z-[100]" style={loaderStyle}>
       <svg
         width={window.innerWidth}
         height={getLoaderHeight()}

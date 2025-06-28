@@ -1,7 +1,14 @@
 import React, { useRef } from "react";
 import { motion, useInView } from "framer-motion";
 
-const MaskText = ({ text, className = "", divClassName = "", margin = "-75%", duration =  0.65}) => {
+const MaskText = ({
+  text,
+  className = "",
+  divClassName = "",
+  margin = "-75%",
+  duration = 0.65,
+  startDelay = 0, // en segundos
+}) => {
   const body = useRef(null);
   const isInView = useInView(body, { once: true, margin: margin });
 
@@ -12,7 +19,7 @@ const MaskText = ({ text, className = "", divClassName = "", margin = "-75%", du
       transition: {
         duration: duration,
         ease: [0.33, 1, 0.68, 1],
-        delay: 0.075 * i,
+        delay: startDelay + 0.075 * i,
       },
     }),
   };

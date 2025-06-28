@@ -4,7 +4,6 @@ import { SectionIntro } from "../components/titleComponents/SectionIntro";
 import IntroSection from "../components/genericComponents/IntroSection";
 import Footer from "../containers/home/Footer";
 import GallerySection from "../containers/gallery/GallerySection";
-import LoaderAnimation from "../routes/LoaderAnimation";
 const sampleImages = [
   { src: "https://i.imgur.com/bs3KZZT.jpeg", alt: "Imagen 1" },
   { src: "https://i.imgur.com/m9XneZP.jpeg", alt: "Imagen 2" },
@@ -20,12 +19,7 @@ const sampleImages = [
 export default function Gallery() {
   return (
     <main>
-      <LoaderAnimation />
-
-      <IntroSection
-        image="https://i.imgur.com/bs3KZZT.jpeg"
-        title="Galeria"
-      />
+      <IntroSection image="https://i.imgur.com/bs3KZZT.jpeg" title="Galeria" />
 
       <CustomContainer>
         <SectionIntro

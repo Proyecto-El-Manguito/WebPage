@@ -28,6 +28,7 @@ import CloseIcon from "@mui/icons-material/Close";
 import PropTypes from "prop-types";
 import { AnimatePresence } from "framer-motion";
 import { ShowAnimateComponent } from "./ShowAnimateComponent";
+import { useNavigationDelay } from "../../routes/NavigationDelayContext";
 
 const urlInsta = "https://www.instagram.com/el_manguito/";
 const urlFacebook = "https://www.facebook.com/el_manguito";
@@ -35,6 +36,7 @@ const urlFacebook = "https://www.facebook.com/el_manguito";
 export default function Navbar() {
   const [mobileOpen, setMobileOpen] = useState(false);
   const scroll = useScrollPosition();
+  const { navigateWithDelay, isTransitioning } = useNavigationDelay();
 
   const handleDrawerToggle = () => {
     setMobileOpen((prevState) => !prevState);
@@ -43,7 +45,8 @@ export default function Navbar() {
   const navigate = useNavigate();
 
   const handleNavigation = (path) => {
-    navigate(path);
+    // navigate(path);
+    navigateWithDelay(path, 500);
     setMobileOpen(false); // Close the drawer after navigation
   };
 

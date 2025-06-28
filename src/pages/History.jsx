@@ -4,13 +4,10 @@ import { CustomContainer } from "../components/titleComponents/CustomContainer";
 import { SectionIntro } from "../components/titleComponents/SectionIntro";
 import TimelineSection from "../containers/history/TimelineSection";
 import Footer from "../containers/home/Footer";
-import LoaderAnimation from "../routes/LoaderAnimation";
 
 export default function History() {
   return (
     <main>
-      <LoaderAnimation />
-
       <IntroSection
         image="https://i.imgur.com/FvoatYS.jpeg"
         title="Historia"
