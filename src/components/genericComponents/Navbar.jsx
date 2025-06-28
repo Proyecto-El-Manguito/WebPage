@@ -45,9 +45,8 @@ export default function Navbar() {
   const navigate = useNavigate();
 
   const handleNavigation = (path) => {
-    // navigate(path);
-    navigateWithDelay(path, 500);
     setMobileOpen(false); // Close the drawer after navigation
+    navigateWithDelay(path, 1100);
   };
 
   return (

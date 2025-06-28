@@ -36,7 +36,7 @@ export default function PageTransition({ color = "#fff" }) {
     height: window.innerHeight,
   });
 
-  const { newTitle, isTransitioning } = useNavigationDelay();
+  const { newTitle, newPath } = useNavigationDelay();
 
   useEffect(() => {
     const update = () =>
@@ -52,19 +52,17 @@ export default function PageTransition({ color = "#fff" }) {
 
   // desmontar tras 2 segundos
   useEffect(() => {
-    const t = setTimeout(() => setShow(false), 1200);
-    return () => clearTimeout(t);
-  }, [isTransitioning]);
-
-  useEffect(() => {
+    console.log("[Tran] newPath", newPath)
     setShow(true);
-  }, [isTransitioning]);
+    const t = setTimeout(() => setShow(false), 1500);
+    return () => clearTimeout(t);
+  }, [newPath]);
 
   return (
     <AnimatePresence mode="wait">
       {show && (
         <CurveSVG
-          key={location.pathname} // la clave hace que AnimatePresence monte y desmonte correctamente
+          key={newPath} // la clave hace que AnimatePresence monte y desmonte correctamente
           {...dimensions}
           color={color}
           message={newTitle}
