@@ -13,19 +13,21 @@ export default function Products() {
   return (
     <main>
       <IntroSection
-        image="https://i.imgur.com/Ukh3q9Q.jpeg"
+        image="https://i.imgur.com/LX0lMrm.jpeg"
         title="Productos"
-        // backgroundOpacity={0.65}
-        // overlayTextColor="text-white"
       />
       <CustomContainer>
         <ProductsHero />
+      </CustomContainer>
+      <div className="bg-[#f6f5f1]">
         <ProductsCatalog />
-        {/* <ProductsStory /> */}
+      </div>
+
+      <CustomContainer>
         <ProductsImpact />
       </CustomContainer>
 
-      <ParallaxIntroSection
+      {/* <ParallaxIntroSection
         parallaxEffect={false}
         image="https://i.imgur.com/IJGwWpe.jpeg"
       >
@@ -37,7 +39,7 @@ export default function Products() {
             className={`text-7xl  font-bold relative z-10 text-white`}
           />
         </div>
-      </ParallaxIntroSection>
+      </ParallaxIntroSection> */}
 
       <Footer></Footer>
     </main>
