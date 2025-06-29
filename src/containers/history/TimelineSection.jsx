@@ -75,14 +75,14 @@ const TimelineItem = ({ item, index }) => {
       {/* Línea vertical + punto */}
       <Box
         sx={{
-          display: { sm: "none", md: "block" },
+          display: { xs: "none", md: "block" },
         }}
       >
         <div
           className="
-        absolute
-        left-6 md:left-1/2
-        top-0
+          absolute
+          left-6 md:left-1/2
+          top-0
           h-full
           flex flex-col items-center
           z-10

@@ -44,7 +44,7 @@ export default function ContactUsCTA() {
         sx={{
           width: "100%",
           height: "100%",
-          padding: 6,
+          padding: { xs: 2, md: 3, ld: 6 },
           display: "flex",
           flexDirection: "column",
           justifyContent: "center",

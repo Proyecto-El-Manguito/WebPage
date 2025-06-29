@@ -83,7 +83,7 @@ export default function OurHistoryCTADemo() {
       >
         <CustomContainer as="section" ref={ref} className="grid !py-16 flex-1">
           <div className="items-center gap-16 md:grid md:grid-cols-2">
-            <div className="flex w-full justify-center relative mt-[5vh] h-screen">
+            <div className="flex w-full justify-center relative mb-20 mb:mb-0 md:h-screen">
               {images.map((image, i) => (
                 <motion.div
                   style={{ y: image.y, ...image.style }}

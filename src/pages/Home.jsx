@@ -12,6 +12,8 @@ import GalleryCTA from "../containers/home/GalleryCTA";
 import LocationAndMapCTA from "../containers/home/LocationAndMapCTA";
 import AnimatedCards from "../containers/home/AnimatedCards";
 import Footer from "../containers/home/Footer";
+import { useMediaQuery } from "@mui/material";
+import { useTheme } from "@mui/material";
 
 const imgArray = [
   {
@@ -59,6 +61,9 @@ const imgArray = [
 ];
 
 export default function Home() {
+  const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down("md"));
+
   useEffect(() => {
     const lenis = new Lenis({
       duration: 1.2,
@@ -80,11 +85,14 @@ export default function Home() {
   }, []);
 
   return (
-    <main className="overflow-hidd en">
+    <main className="overflow-hi dden">
       <VideoHero video={video} />
-      <OurHistoryCTADemo />
+      <div className="overflow-hidden">
+        <OurHistoryCTADemo />
+      </div>
       <AnimatedCards />
-      <ActivitiesCTA video={piscina} imgArray={imgArray} />
+      {!isMobile && <ActivitiesCTA video={piscina} imgArray={imgArray} />}
+
       <div className="overflow-hidden">
         <GalleryCTA />
         <LocationAndMapCTA />

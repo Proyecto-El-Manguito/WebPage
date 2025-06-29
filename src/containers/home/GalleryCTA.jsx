@@ -56,8 +56,8 @@ export default function GalleryCTA() {
       className="flex flex-col gap-[3vw] pb-20 relative bg-white z-[1]"
     >
       <CustomContainer>
-        <SectionIntro title={"Galeria"} id="Galeria">
-          <p className="text-lg">Conoce nuestra galeria</p>
+        <SectionIntro title={"Galería"} id="Galeria">
+          <p className="text-lg">Conoce nuestra galería</p>
         </SectionIntro>
       </CustomContainer>
 
@@ -69,7 +69,7 @@ export default function GalleryCTA() {
         {slider1.map((project, index) => (
           <div
             key={index}
-            className="w-1/4 h-[20vw] flex items-center justify-center"
+            className="aspect-square md:w-1/4 h-[30vh] md:h-[20vw] flex items-center justify-center"
             style={{ backgroundColor: project.color }}
           >
             <div className="relative w-[80%] h-[80%]">
@@ -91,7 +91,7 @@ export default function GalleryCTA() {
         {slider2.map((project, index) => (
           <div
             key={index}
-            className="w-1/4 h-[20vw] flex items-center justify-center"
+            className="aspect-square md:w-1/4 h-[30vh] md:h-[20vw] flex items-center justify-center"
             style={{ backgroundColor: project.color }}
           >
             <div className="relative w-[80%] h-[80%]">

@@ -48,55 +48,13 @@ export default function ProductsCTA() {
         </div>
       </div>
 
-      {/* Malla animada de fondo */}
-      {/* <Box
-        component={motion.div}
-        sx={{
-          position: "absolute",
-          top: 0,
-          left: 0,
-          width: "300%", // 3 veces el ancho del contenedor
-          height: "300%", // 3 veces el alto del contenedor
-          display: "grid",
-          gridTemplateColumns: "repeat(10, 100px)",
-          gridTemplateRows: "repeat(10, 100px)",
-          gap: "20px",
-          opacity: 0.1,
-          zIndex: 1,
-        }}
-        animate={{
-          x: ["0%", "-33%"], // Movimiento hacia la izquierda
-          y: ["0%", "-33%"], // Movimiento hacia arriba
-        }}
-        transition={{
-          duration: 20, // Duración del loop completo
-          ease: "linear",
-          repeat: Infinity,
-          repeatType: "loop",
-        }}
-      >
-        {[...Array(100)].map((_, index) => (
-          <Box
-            key={index}
-            component="img"
-            src={imgTest}
-            alt={`Elemento ${index}`}
-            sx={{
-              width: "100px",
-              height: "100px",
-              objectFit: "cover",
-            }}
-          />
-        ))}
-      </Box> */}
-
       {/* Contenido principal */}
       <Stack
         spacing={2}
         sx={{
           width: "100%",
           height: "100%",
-          padding: 6,
+          padding: { xs: 2, md: 3, ld: 6 },
           display: "flex",
           flexDirection: "column",
           justifyContent: "center",

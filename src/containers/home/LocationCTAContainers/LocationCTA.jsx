@@ -53,7 +53,7 @@ export default function LocationCTA() {
         <Grid
           size={{ xs: 12, sm: 12, md: 4 }}
           sx={{
-            padding: { xs: 4, sm: 4, md: 6 },
+            padding: { xs: 2, md: 3, ld: 6 },
           }}
         >
           <motion.div
