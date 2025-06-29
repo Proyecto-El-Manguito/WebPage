@@ -67,6 +67,8 @@ export default function IntroSection({
           margin="0%"
           startDelay={0.7}
           className={`text-10xl font-bold relative z-10 ${overlayTextColor}`}
+          divClassName={`text-10xl`}
+
         />
       </CustomContainer>
     </div>

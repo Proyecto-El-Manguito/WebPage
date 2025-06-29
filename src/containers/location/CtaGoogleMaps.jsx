@@ -90,6 +90,7 @@ export function CtaGoogleMaps() {
         animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 40 }}
         transition={{ duration: 0.6, ease: "easeOut" }}
         style={{ zIndex: 2, textAlign: "center" }}
+        className="p-9"
       >
         {/* <Typography variant="h4" fontWeight="bold" color="white" gutterBottom>
           ¿Ya sabes cómo llegar?

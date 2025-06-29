@@ -57,18 +57,19 @@ const ActivitiesSection = ({
       </div>
 
       {/* Contenido textual */}
-      <Box
-        component="div"
-        className="flex flex-col justify-center p-8 md:w-1/2 bg-white"
-      >
-        <CustomContainer className="!max-w-3xl">
-          <Box component="div" className="flex flex-col justify-center md:pr-8">
-            <Title className="mb-8" large style={{ color: color || "#275448" }}>
-              {title}
-            </Title>
-            <p className="mb-4">{description}</p>
-          </Box>
-        </CustomContainer>
+      <Box component="div" className="flex flex-col justify-center md:w-1/2">
+        <Box
+          component="div"
+          className="flex flex-col justify-center md:pr-8"
+          sx={{
+            padding: { xs: 2, md: 3, ld: 6 },
+          }}
+        >
+          <Title className="mb-8" large style={{ color: color || "#275448" }}>
+            {title}
+          </Title>
+          <p className="mb-4">{description}</p>
+        </Box>
       </Box>
     </Box>
   );
