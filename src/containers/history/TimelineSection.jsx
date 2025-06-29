@@ -1,7 +1,7 @@
 import React, { useRef } from "react";
 import { motion, useInView } from "framer-motion";
 import { Title } from "../../components/titleComponents/Title";
-import { useTheme } from "@mui/material";
+import { Box, useTheme } from "@mui/material";
 
 const timelineData = [
   {
@@ -38,29 +38,29 @@ const TimelineItem = ({ item, index }) => {
   const isLeft = index % 2 === 0;
 
   return (
-    <div className="relative w-full flex justify-center ">
-      <div className="w-full md:w-1/2 md:px-8 flex justify-end md:justify-center">
+    <div className="relative w-full flex flex-col md:flex-row justify-center items-stretch mb-16">
+      {/* Card izquierda o full-width en mobile */}
+      <div className="w-full md:w-1/2 md:px-8 flex md:justify-end md:items-center">
         {isLeft && (
           <motion.div
             ref={ref}
             initial={{ opacity: 0, x: -50 }}
             animate={inView ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 0.6 }}
-            className="text-right"
+            className="text-right md:text-right text-left"
           >
-            <div className="bg-white p-6 rounded-xl shadow-lg">
+            <div className="bg-white p-6 rounded-xl shadow-lg w-full">
               <p className="text-sm text-gray-500">
                 {item.location} {item.year}
               </p>
               <Title
                 as="h3"
                 large
-                className="mb-4 mt-8 md:mt-0"
+                className="mb-4 mt-4 md:mt-0"
                 style={{ color: theme.palette.third.main }}
               >
                 {item.title}
               </Title>
-
               <p className="text-gray-700 mb-4">{item.description}</p>
               <img
                 src={item.image}
@@ -73,15 +73,31 @@ const TimelineItem = ({ item, index }) => {
       </div>
 
       {/* Línea vertical + punto */}
-      <div className="absolute left-1/2 transform -translate-x-1/2 h-full flex flex-col items-center">
+      <Box
+        sx={{
+          display: { sm: "none", md: "block" },
+        }}
+      >
         <div
-          style={{ backgroundColor: theme.palette.secondary.main }}
-          className="w-4 h-4 rounded-full shadow-md ring-4 ring-white z-10"
-        />
-        <div className="w-[2px] h-full bg-gray-300" />
-      </div>
+          className="
+        absolute
+        left-6 md:left-1/2
+        top-0
+          h-full
+          flex flex-col items-center
+          z-10
+          "
+        >
+          <div
+            style={{ backgroundColor: theme.palette.secondary.main }}
+            className="w-4 h-4 rounded-full shadow-md ring-4 ring-white z-10"
+          />
+          <div className="w-[2px] h-full bg-gray-300" />
+        </div>
+      </Box>
 
-      <div className="w-full md:w-1/2 md:px-8 flex justify-start md:justify-center">
+      {/* Card derecha o full-width en mobile */}
+      <div className="w-full md:w-1/2 md:px-8 flex md:justify-start md:items-center">
         {!isLeft && (
           <motion.div
             ref={ref}
@@ -90,15 +106,14 @@ const TimelineItem = ({ item, index }) => {
             transition={{ duration: 0.6 }}
             className="text-left"
           >
-            <div className="bg-white p-6 rounded-xl shadow-lg">
+            <div className="bg-white p-6 rounded-xl shadow-lg w-full">
               <p className="text-sm text-gray-500">
                 {item.location} {item.year}
               </p>
-
               <Title
                 as="h3"
                 large
-                className="mb-4 mt-8 md:mt-0"
+                className="mb-4 mt-4 md:mt-0"
                 style={{ color: theme.palette.third.main }}
               >
                 {item.title}
@@ -119,7 +134,7 @@ const TimelineItem = ({ item, index }) => {
 
 export default function TimelineSection() {
   return (
-    <section className="relative py-20">
+    <section className="relative py-20 px-2 md:px-0">
       {timelineData.map((item, index) => (
         <TimelineItem key={index} item={item} index={index} />
       ))}

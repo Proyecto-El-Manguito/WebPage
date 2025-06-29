@@ -55,11 +55,11 @@ export default function Navbar() {
         component="nav"
         elevation={scroll ? 2 : 0} // Cambia la sombra según el scroll
         sx={{
-          backgroundColor: scroll ? "#27544870" : "transparent", // fondo transparente
-          backdropFilter: "blur(1px)", // 🔍 efecto blur
-          WebkitBackdropFilter: "blur(1px)", // soporte para Safari
+          backgroundColor: scroll ? "#27544890" : "transparent", 
+          backdropFilter:  scroll ? "blur(7px)" : "blur(0px)", 
+          WebkitBackdropFilter:  scroll ? "blur(7px)" : "blur(0px)", 
           color: "#fff", // texto blanco, puedes cambiarlo según tu fondo
-          transition: "background-color 0.3s ease", // transición suave
+          transition: "all 0.3s ease", // transición suave
         }}
       >
         <DesktopNav
