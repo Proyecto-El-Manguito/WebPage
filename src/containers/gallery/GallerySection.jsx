@@ -6,7 +6,7 @@ const GallerySection = ({ images = [] }) => {
   const [selectedImage, setSelectedImage] = useState(null);
 
   return (
-    <section className="w-full ">
+    <section className="w-full mb-30">
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
         {images.map((img, index) => (
           <motion.div

@@ -20,14 +20,40 @@ const ContactSection = () => {
   });
   const [loading, setLoading] = useState(false);
   const [status, setStatus] = useState(null);
+  const [errors, setErrors] = useState({});
 
   const handleChange = (e) =>
     setFormData({ ...formData, [e.target.name]: e.target.value });
 
+  function validate(form) {
+    const newErrors = {};
+
+    if (!form.name.trim()) newErrors.name = "El nombre es obligatorio.";
+    if (!form.email.trim()) {
+      newErrors.email = "El correo electrónico es obligatorio.";
+    } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.email)) {
+      newErrors.email = "Correo electrónico inválido.";
+    }
+    if (!form.subject.trim()) newErrors.subject = "El asunto es obligatorio.";
+    if (!form.message.trim()) newErrors.message = "El mensaje es obligatorio.";
+    // Teléfono opcional, pero puedes validar formato si lo deseas:
+    if (form.phone && !/^[\d+\-\s()]{7,20}$/.test(form.phone))
+      newErrors.phone = "Número de teléfono inválido.";
+
+    return newErrors;
+  }
+
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setLoading(true);
     setStatus(null);
+
+    const validationErrors = validate(formData);
+    setErrors(validationErrors);
+
+    if (Object.keys(validationErrors).length > 0) return;
+
+    setLoading(true);
+
     try {
       await new Promise((r) => setTimeout(r, 1200));
       setStatus("success");
@@ -71,6 +97,8 @@ const ContactSection = () => {
             name="name"
             variant="outlined"
             value={formData.name}
+            error={Boolean(errors.name)}
+            helperText={errors.name}
             onChange={handleChange}
             InputProps={{ className: "bg-gray-100" }}
           />
@@ -83,6 +111,8 @@ const ContactSection = () => {
             variant="outlined"
             type="email"
             value={formData.email}
+            error={Boolean(errors.email)}
+            helperText={errors.email}
             onChange={handleChange}
             InputProps={{ className: "bg-gray-100" }}
           />
@@ -93,6 +123,8 @@ const ContactSection = () => {
             name="phone"
             variant="outlined"
             value={formData.phone}
+            error={Boolean(errors.phone)}
+            helperText={errors.phone}
             onChange={handleChange}
             InputProps={{ className: "bg-gray-100" }}
           />
@@ -104,6 +136,8 @@ const ContactSection = () => {
             name="subject"
             variant="outlined"
             value={formData.subject}
+            error={Boolean(errors.subject)}
+            helperText={errors.subject}
             onChange={handleChange}
             InputProps={{ className: "bg-gray-100" }}
           />
@@ -117,6 +151,8 @@ const ContactSection = () => {
             multiline
             rows={5}
             value={formData.message}
+            error={Boolean(errors.message)}
+            helperText={errors.message}
             onChange={handleChange}
             InputProps={{ className: "bg-gray-100" }}
           />

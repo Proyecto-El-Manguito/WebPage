@@ -55,9 +55,9 @@ export default function Navbar() {
         component="nav"
         elevation={scroll ? 2 : 0} // Cambia la sombra según el scroll
         sx={{
-          backgroundColor: scroll ? "#27544890" : "transparent", 
-          backdropFilter:  scroll ? "blur(7px)" : "blur(0px)", 
-          WebkitBackdropFilter:  scroll ? "blur(7px)" : "blur(0px)", 
+          backgroundColor: scroll ? "#27544890" : "transparent",
+          backdropFilter: scroll ? "blur(7px)" : "blur(0px)",
+          WebkitBackdropFilter: scroll ? "blur(7px)" : "blur(0px)",
           color: "#fff", // texto blanco, puedes cambiarlo según tu fondo
           transition: "all 0.3s ease", // transición suave
         }}
@@ -117,13 +117,12 @@ const DesktopNav = ({ handleDrawerToggle, handleNavigation }) => {
         >
           <Typography
             variant="h6"
-            component={Link}
-            to="/"
-            sx={
-              {
-                // flexGrow: 1,
-              }
-            }
+            onClick={() => handleNavigation("/")}
+            sx={{
+              cursor: "pointer",
+              userSelect: "none",
+              // flexGrow: 1,
+            }}
           >
             El manguito
           </Typography>

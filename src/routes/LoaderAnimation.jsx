@@ -12,7 +12,7 @@ const LoaderAnimation = () => {
   const location = useLocation();
 
   const initialCurve = 200;
-  const [visible, setVisible] = useState(false);
+  const [visible, setVisible] = useState(true);
   const [fade, setFade] = useState(false);
 
   // Función para alto dinámico
@@ -26,8 +26,8 @@ const LoaderAnimation = () => {
     let animating = true;
     let start = undefined;
 
-    setVisible(true);         // Montar
-    setFade(true);            // Inicia Fade In
+    setVisible(true); // Montar
+    setFade(true); // Inicia Fade In
 
     // Inicia la animación después del fade
     timeoutId = setTimeout(() => {
@@ -94,7 +94,9 @@ const LoaderAnimation = () => {
     path.current.setAttributeNS(
       null,
       "d",
-      `M0 0 L${width} 0 L${width} ${height} Q${width / 2} ${height - curve} 0 ${height} L0 0`
+      `M0 0 L${width} 0 L${width} ${height} Q${width / 2} ${
+        height - curve
+      } 0 ${height} L0 0`
     );
   };
 
@@ -125,6 +127,38 @@ const LoaderAnimation = () => {
       >
         <path ref={path} fill="#fff" stroke="#fff" strokeWidth={1} />
       </svg>
+
+      {/* Texto centrado y animado */}
+      <div
+        style={{
+          position: "absolute",
+          top: 0,
+          left: 0,
+          width: "100%",
+          height: getLoaderHeight() + "px",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          pointerEvents: "none",
+        }}
+      >
+        <span
+          style={{
+            fontSize: 48,
+            fontWeight: 700,
+            color: "#333",
+            // textShadow: "0 4px 16px #fff, 0 1px 10px #aaa",
+            letterSpacing: 2,
+            opacity: fade ? 1 : 0,
+            transition: `opacity ${
+              FADE_DURATION + 100
+            }ms cubic-bezier(.4,0,.2,1)`,
+            userSelect: "none",
+          }}
+        >
+          El manguito
+        </span>
+      </div>
     </div>
   );
 };

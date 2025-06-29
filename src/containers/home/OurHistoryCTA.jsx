@@ -85,7 +85,7 @@ export default function SectionWithMotion() {
               Nuestros expertos en viajes optimizan cada instante para que tu
               experiencia sea fluida y enriquecedora de principio a fin.
             </p>
-            <StyledLink width="22ch" title={"VER MÁS"} href="/history" />
+            <StyledLink width="22ch" title={"VER MÁS"} href="/historia" />
           </motion.div>
         </div>
       </CustomContainer>

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useLocation } from "react-router-dom";
 import { useNavigationDelay } from "./NavigationDelayContext";
@@ -31,11 +31,13 @@ function getPaths(width, height, upperCurve) {
 
 export default function PageTransition({ color = "#fff" }) {
   const location = useLocation();
+
   const [dimensions, setDimensions] = useState({
     width: window.innerWidth,
     height: window.innerHeight,
   });
-
+  
+  const isFirstRender = useRef(true);
   const { newTitle, newPath } = useNavigationDelay();
 
   useEffect(() => {
@@ -48,11 +50,16 @@ export default function PageTransition({ color = "#fff" }) {
     return () => window.removeEventListener("resize", update);
   }, []);
 
-  const [show, setShow] = useState(true);
+  const [show, setShow] = useState(false);
 
   // desmontar tras 2 segundos
   useEffect(() => {
-    console.log("[Tran] newPath", newPath)
+     if (isFirstRender.current) {
+      isFirstRender.current = false;
+      setShow(false);
+      return;
+    }
+
     setShow(true);
     const t = setTimeout(() => setShow(false), 1500);
     return () => clearTimeout(t);

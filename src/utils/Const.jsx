@@ -14,34 +14,34 @@ export const navItems = [
   // },
   {
     name: "Actividades",
-    to: "/activities",
+    to: "/actividades",
     icon: CelebrationIcon,
   },
   {
     name: "Historia",
-    to: "/history",
+    to: "/historia",
     icon: HistoryEduIcon,
   },
   {
     name: "Galería",
-    to: "/gallery",
+    to: "/galeria",
     icon: CollectionsIcon,
   },
 
   {
     name: "Como llegar",
-    to: "/location",
+    to: "/ubicacion",
     icon: LocationOnIcon,
   },
   {
     name: "Contactanos",
-    to: "/contact",
+    to: "/contacto",
     icon: EmailIcon,
   },
   {
     name: "Restaurante",
-    to: "/restaurant",
+    to: "/restaurante",
     icon: FastfoodIcon,
   },
-  { name: "Productos", to: "/products", icon: CategoryIcon },
+  { name: "Productos", to: "/productos", icon: CategoryIcon },
 ];

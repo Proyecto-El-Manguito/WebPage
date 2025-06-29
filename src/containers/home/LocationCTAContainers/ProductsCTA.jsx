@@ -91,7 +91,7 @@ export default function ProductsCTA() {
                 color="#275448"
                 minWidth="20ch"
                 title={"Ver más"}
-                to="/contacto"
+                to="/productos"
               />
             ),
           },

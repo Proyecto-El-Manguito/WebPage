@@ -123,7 +123,7 @@ export default function OurHistoryCTADemo() {
                 color="#000"
                 width="22ch"
                 title={"VER MÁS"}
-                to="/history"
+                to="/historia"
               />
             </motion.div>
           </div>

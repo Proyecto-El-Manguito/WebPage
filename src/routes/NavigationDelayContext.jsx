@@ -22,22 +22,11 @@ export function NavigationDelayProvider({ children }) {
   // Función que otros componentes pueden llamar para navegar con delay
   const navigateWithDelay = (path, delay = 500) => {
     if (location.pathname === path || isTransitioningAll) {
-      return; // No haga nada si ya está en la ruta o se esta ejecutando la transicion
-    } else {
-      console.log(
-        "[NAV] location.pathname",
-        location.pathname,
-        "path",
-        path,
-        "isTransitioningAll",
-        isTransitioningAll
-      );
-    }
+      return; 
+    } 
 
     const title = navTitles[path] || "";
     setNewTitle(title);
-
-    console.log("path", path, "title", title);
 
     setIsTransitioning(true);
     setIsTransitioningAll(true);
@@ -49,12 +38,10 @@ export function NavigationDelayProvider({ children }) {
       setIsTransitioning(false);
       setPendingPath(null);
       navigate(path);
-      console.log("Moviendose a", path);
     }, delay);
 
     setTimeout(() => {
       setIsTransitioningAll(false);
-      console.log("Cerrando animacion", path);
     }, delay + 1500);
   };
 

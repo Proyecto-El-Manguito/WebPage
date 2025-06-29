@@ -4,8 +4,17 @@ import { Box, Container, Typography, IconButton } from "@mui/material";
 import { Facebook, Instagram, Twitter } from "@mui/icons-material";
 import { navItems } from "../../utils/Const";
 import { CustomContainer } from "../../components/titleComponents/CustomContainer";
+import { useNavigationDelay } from "../../routes/NavigationDelayContext";
+import { Link } from "react-router-dom";
 
 const Footer = () => {
+  const { navigateWithDelay } = useNavigationDelay();
+
+  const handleNavigation = (to) => {
+    // e.preventDefault();
+    navigateWithDelay(to, 1100);
+  };
+
   return (
     <div
       className="relative h-[600px]"
@@ -13,7 +22,7 @@ const Footer = () => {
     >
       <div className="fixed bottom-0 h-[600px] w-full bg-white text-black">
         <footer className="bg-gray-800 text-white px-6 sm:px-12 py-12">
-          <CustomContainer>
+          <CustomContainer className="z-[2]">
             {/* Columna: Navegación */}
             <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-10">
               <div>
@@ -23,9 +32,36 @@ const Footer = () => {
                 <ul className="space-y-2 text-sm">
                   {navItems.slice(0, 4).map((item) => (
                     <li key={item.name}>
-                      <a href={item.to} className="hover:underline">
+                      {/* <a
+                        href={item.to}
+                        onClick={(e) => handleClick(e, item.to)}
+                        className="hover:underline"
+                      >
                         {item.name}
-                      </a>
+                      </a> */}
+                      {/* <Link
+                        to={item?.to}
+                        onClick={(e) => {
+                          e.preventDefault();
+                          navigateWithDelay(item.to, 1100);
+                        }}
+                        className="hover:underline"
+                      >
+                        
+                      </Link> */}
+                      <span
+                        className="hover:underline cursor-pointer"
+                        tabIndex={0}
+                        role="link"
+                        onClick={() => navigateWithDelay(item.to, 1100)}
+                        onKeyDown={(e) => {
+                          if (e.key === "Enter" || e.key === " ") {
+                            navigateWithDelay(item.to, 1100);
+                          }
+                        }}
+                      >
+                        {item.name}
+                      </span>
                     </li>
                   ))}
                 </ul>
@@ -37,9 +73,19 @@ const Footer = () => {
                 <ul className="space-y-2 text-sm">
                   {navItems.slice(4).map((item) => (
                     <li key={item.name}>
-                      <a href={item.to} className="hover:underline">
+                      <span
+                        className="hover:underline cursor-pointer"
+                        tabIndex={0}
+                        role="link"
+                        onClick={() => navigateWithDelay(item.to, 1100)}
+                        onKeyDown={(e) => {
+                          if (e.key === "Enter" || e.key === " ") {
+                            navigateWithDelay(item.to, 1100);
+                          }
+                        }}
+                      >
                         {item.name}
-                      </a>
+                      </span>
                     </li>
                   ))}
                 </ul>
@@ -86,7 +132,7 @@ const Footer = () => {
           </CustomContainer>
 
           {/* Circulitos caminantes */}
-          <div className="z-[-1]">
+          <div className="z-[-100]">
             <div className="absolute top-1/2 right-0 w-[800px] h-[800px] rounded-full bg-[#40587a30] flex items-center justify-center">
               <div className="w-[600px] h-[600px] rounded-full bg-[#2d3e5650]"></div>
             </div>

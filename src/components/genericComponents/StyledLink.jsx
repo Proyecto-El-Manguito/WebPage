@@ -3,6 +3,7 @@ import { Button, useMediaQuery, useTheme } from "@mui/material";
 import { motion, useAnimation } from "framer-motion";
 
 import { Link as RouterLink } from "react-router-dom";
+import { useNavigationDelay } from "../../routes/NavigationDelayContext";
 
 export default function StyledLink({
   title,
@@ -16,6 +17,7 @@ export default function StyledLink({
   backgroundColor = "#a7d5a2",
   ...props
 }) {
+  const { navigateWithDelay } = useNavigationDelay?.() || {};
   const controls = useAnimation();
   const buttonRef = useRef(null);
 
@@ -34,6 +36,14 @@ export default function StyledLink({
     });
   };
 
+  const handleClick = (e) => {
+    if (isInternal && typeof navigateWithDelay === "function") {
+      e.preventDefault();
+      navigateWithDelay(to, 1100);
+    }
+    // Para casos externos o sin delay, deja que el link funcione normal
+  };
+
   const isInternal = Boolean(to);
 
   return (
@@ -41,6 +51,7 @@ export default function StyledLink({
       ref={buttonRef}
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
+      onClick={handleClick}
       component={isInternal ? RouterLink : "a"}
       {...(isInternal ? { to } : { href, target, rel })}
       variant="outlined"

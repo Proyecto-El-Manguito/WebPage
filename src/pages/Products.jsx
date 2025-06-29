@@ -20,7 +20,9 @@ export default function Products() {
         <ProductsHero />
       </CustomContainer>
       <div className="bg-[#f6f5f1]">
-        <ProductsCatalog />
+        <CustomContainer>
+          <ProductsCatalog />
+        </CustomContainer>
       </div>
 
       <CustomContainer>

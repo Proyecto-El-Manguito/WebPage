@@ -110,7 +110,7 @@ export default function GalleryCTA() {
           color="#000"
           width="32ch"
           title={"VER todas las fotos"}
-          to="/history"
+          to="/galeria"
         />
       </CustomContainer>
     </div>
