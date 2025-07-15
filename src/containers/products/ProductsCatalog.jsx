@@ -11,8 +11,8 @@ import {
 
 const PRODUCTS = [
   {
-    name: "Yuca fresca",
-    description: "Cosechada en su punto óptimo, lista para consumo directo o procesamiento.",
+    name: "Yuca",
+    description: "Cosechada, lista para su procesamiento.",
     image: "https://i.imgur.com/XRtxZ9Tg.jpg",
     tag: "Raíz",
   },

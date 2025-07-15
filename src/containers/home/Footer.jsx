@@ -21,7 +21,7 @@ const Footer = () => {
       style={{ clipPath: "polygon(0% 0, 100% 0%, 100% 100%, 0 100%)" }}
     >
       <div className="fixed bottom-0 h-[600px] w-full bg-white text-black">
-        <footer className="bg-gray-800 text-white px-6 sm:px-12 py-12">
+        <footer className="bg-[#275448] text-white px-6 sm:px-12 py-12">
           <CustomContainer className="z-[2]">
             {/* Columna: Navegación */}
             <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-10">
@@ -32,23 +32,7 @@ const Footer = () => {
                 <ul className="space-y-2 text-sm">
                   {navItems.slice(0, 4).map((item) => (
                     <li key={item.name}>
-                      {/* <a
-                        href={item.to}
-                        onClick={(e) => handleClick(e, item.to)}
-                        className="hover:underline"
-                      >
-                        {item.name}
-                      </a> */}
-                      {/* <Link
-                        to={item?.to}
-                        onClick={(e) => {
-                          e.preventDefault();
-                          navigateWithDelay(item.to, 1100);
-                        }}
-                        className="hover:underline"
-                      >
-                        
-                      </Link> */}
+                    
                       <span
                         className="hover:underline cursor-pointer"
                         tabIndex={0}
@@ -94,7 +78,7 @@ const Footer = () => {
 
             {/* Columna: Título */}
             <div className="md:col-span-2 mt-28 pb-4">
-              <h1 className="font-mona text-4xl sm:text-5xl lg:text-6xl font-title font-medium leading-none">
+              <h1 className="z-[1] font-mona text-4xl sm:text-5xl lg:text-6xl font-title font-medium leading-none">
                 El Manguito
               </h1>
             </div>
@@ -106,6 +90,7 @@ const Footer = () => {
                   href="https://www.instagram.com/acoapaserderl/"
                   target="_blank"
                   rel="noopener noreferrer"
+                  className="z-[1]"
                 >
                   <Instagram className="hover:text-pink-500 transition" />
                 </a>
@@ -113,6 +98,7 @@ const Footer = () => {
                   href="https://www.facebook.com/people/Acoapaser-de-RL/100093246420673/?mibextid=LQQJ4d"
                   target="_blank"
                   rel="noopener noreferrer"
+                  className="z-[1]"
                 >
                   <Facebook className="hover:text-blue-500 transition" />
                 </a>
@@ -120,11 +106,12 @@ const Footer = () => {
                   href="https://twitter.com/ACOPASERdeRL?"
                   target="_blank"
                   rel="noopener noreferrer"
+                  className="z-[1]"
                 >
                   <Twitter className="hover:text-blue-400 transition" />
                 </a>
               </div>
-              <p className="text-sm text-gray-400 mt-4 md:mt-0">
+              <p className="z-[1] text-sm text-gray-400 mt-4 md:mt-0">
                 © {new Date().getFullYear()} ACOPASER de R.L. Todos los derechos
                 reservados.
               </p>
@@ -133,8 +120,8 @@ const Footer = () => {
 
           {/* Circulitos caminantes */}
           <div className="z-[-100]">
-            <div className="absolute top-1/2 right-0 w-[800px] h-[800px] rounded-full bg-[#40587a30] flex items-center justify-center">
-              <div className="w-[600px] h-[600px] rounded-full bg-[#2d3e5650]"></div>
+            <div className="absolute top-1/2 right-0 w-[800px] h-[800px] rounded-full bg-[#add3c923] flex items-center justify-center">
+              <div className="w-[600px] h-[600px] rounded-full bg-[#2f8f7550]"></div>
             </div>
           </div>
         </footer>
