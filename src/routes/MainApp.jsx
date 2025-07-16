@@ -20,6 +20,7 @@ import { useLocation } from "react-router-dom";
 import { NavigationDelayProvider } from "./NavigationDelayContext";
 import { navTitles } from "../utils/navTitles";
 import Lenis from "lenis";
+import Privacy from "../pages/Privacy";
 
 export default function MainApp() {
   const theme = createTheme(useThemeHook());
@@ -64,6 +65,7 @@ export default function MainApp() {
           <Route path="/ubicacion" element={<Location />} />
           <Route path="/contacto" element={<Contact />} />
           <Route path="/productos" element={<Products />} />
+          <Route path="/privacidad" element={<Privacy />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </NavigationDelayProvider>
